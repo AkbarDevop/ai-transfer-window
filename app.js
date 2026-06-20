@@ -43,20 +43,18 @@ function avColor(t) {
   return /^#0a0a0a$/i.test(c) ? "#16233c" : c;
 }
 // resolve a synchronous photo URL (direct url or GitHub avatar); wiki is async
+const xAvatar = x => `https://unavatar.io/x/${x}?fallback=false`;
+// synchronous sources only (direct photo / github). wiki + x are resolved async (wiki preferred).
 function photoUrl(t) {
   if (t.photo) return t.photo;
   if (t.gh) return `https://github.com/${t.gh}.png?size=160`;
-  if (t.x) return `https://unavatar.io/x/${t.x}?fallback=false`;
   return null;
 }
 function avatar(t, cls) {
   const url = photoUrl(t);
-  if (url) {
-    return `<span class="${cls} has-photo" style="background:${avColor(t)};background-image:url(${esc(url)});background-size:cover;background-position:center top"></span>`;
-  }
-  if (t.wiki) {
-    return `<span class="${cls}" data-wiki="${esc(t.wiki)}" style="background:${avColor(t)}">${initials(t.name)}</span>`;
-  }
+  if (url) return `<span class="${cls} has-photo" style="background:${avColor(t)};background-image:url(${esc(url)});background-size:cover;background-position:center top"></span>`;
+  if (t.wiki) return `<span class="${cls}" data-wiki="${esc(t.wiki)}"${t.x ? ` data-x="${esc(t.x)}"` : ""} style="background:${avColor(t)}">${initials(t.name)}</span>`;
+  if (t.x) return `<span class="${cls} has-photo" style="background:${avColor(t)};background-image:url(${xAvatar(t.x)});background-size:cover;background-position:center top"></span>`;
   return `<span class="${cls}" style="background:${avColor(t)}">${initials(t.name)}</span>`;
 }
 function shareLink(t) {
@@ -87,7 +85,8 @@ function hydratePhotos() {
     const wiki = el.getAttribute("data-wiki");
     if (!wiki || el.dataset.done) return;
     el.dataset.done = "1";
-    const url = await getPhoto(wiki);
+    let url = await getPhoto(wiki);
+    if (!url) { const x = el.getAttribute("data-x"); if (x) url = xAvatar(x); }
     if (!url) return;
     el.style.backgroundImage = `url(${url})`;
     el.style.backgroundSize = "cover";
@@ -109,8 +108,10 @@ function renderSpotlight() {
     const photo = url
       ? `<div class="photo has-photo" style="background-image:url(${esc(url)});background-size:cover;background-position:center top"></div>`
       : t.wiki
-        ? `<div class="photo" data-wiki="${esc(t.wiki)}"></div>`
-        : `<div class="photo mono" style="background:${avColor(t)}">${initials(t.name)}</div>`;
+        ? `<div class="photo" data-wiki="${esc(t.wiki)}"${t.x ? ` data-x="${esc(t.x)}"` : ""}></div>`
+        : t.x
+          ? `<div class="photo has-photo" style="background-image:url(${xAvatar(t.x)});background-size:cover;background-position:center top"></div>`
+          : `<div class="photo mono" style="background:${avColor(t)}">${initials(t.name)}</div>`;
     return `<article class="spot ${lead ? "lead" : ""}">
       ${photo}<div class="scrim"></div>
       <div class="meta">
@@ -283,13 +284,11 @@ async function boot() {
     const byId = new Map();
     [...(seed.transfers || seed), ...(Array.isArray(dynamic) ? dynamic : [])].forEach(t => byId.set(t.id, t));
     TRANSFERS = [...byId.values()].map(t => {
-      // backfill a photo source from researcher links only when the transfer has none
-      if (!t.photo && !t.gh && !t.wiki && !t.x) {
-        const r = researchers[slugify(t.name)];
-        if (r && r.links) {
-          if (r.links.github) t.gh = r.links.github;
-          else if (r.links.x) t.x = r.links.x;
-        }
+      // backfill photo sources from researcher links: x is the wiki-fails fallback; gh only when no primary source
+      const r = researchers[slugify(t.name)];
+      if (r && r.links) {
+        if (!t.x && r.links.x) t.x = r.links.x;
+        if (!t.photo && !t.gh && !t.wiki && r.links.github) t.gh = r.links.github;
       }
       return t;
     });
