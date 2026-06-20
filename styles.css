@@ -271,6 +271,23 @@ img, .photo { max-width: 100%; }
 @media (max-width: 760px) { .mrow .m-mod, .mrow .m-tag { display: none; } }
 @media (max-width: 520px) { .mrow .m-open { display: none; } }
 
+/* ===== lab page ===== */
+.lab-hero { display: flex; align-items: center; gap: 20px; padding: 22px; }
+.lab-badge { width: 84px; height: 84px; border-radius: 14px; border: 2px solid var(--line); background: #fff; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.lab-logo { width: 46px; height: 46px; -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; }
+.lab-logo-img { width: 46px; height: 46px; object-fit: contain; }
+.lab-logo-mono { font-size: 26px; font-weight: 800; }
+.lab-head h1 { margin: 0 0 9px; font-size: 28px; letter-spacing: -0.02em; color: var(--navy); }
+.lab-stats { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+.lab-stats .ls b { color: var(--navy); font-size: 15px; font-variant-numeric: tabular-nums; }
+.lab-stats .ls b.net.pos { color: var(--green); } .lab-stats .ls b.net.neg { color: var(--red); }
+.mini { text-decoration: none; color: inherit; }
+.mini:hover { background: var(--row-hover); text-decoration: none; }
+.lab-link { text-decoration: none; }
+.lab-link:hover { text-decoration: none; opacity: 0.8; }
+.standings tbody tr:hover { background: var(--row-hover); }
+@media (max-width: 560px) { .lab-hero { flex-direction: column; text-align: center; } .lab-stats { justify-content: center; } }
+
 /* ===== researchers directory ===== */
 .dir-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .rcard { display: flex; align-items: center; gap: 13px; background: #fff; border: 1px solid var(--head-border); border-radius: 8px; padding: 13px 15px; color: var(--text); transition: all .14s; }

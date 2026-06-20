@@ -244,7 +244,7 @@ function renderStandings() {
     .filter(r => r.in || r.out).sort((a, b) => b.net - a.net || b.in - a.in);
   const body = sorted.map(r => {
     const cls = r.net > 0 ? "pos" : r.net < 0 ? "neg" : "zero";
-    return `<tr><td>${crest(r.id)}</td><td class="num">${r.in}</td><td class="num">${r.out}</td><td class="num net ${cls}">${r.net > 0 ? "+" : ""}${r.net}</td></tr>`;
+    return `<tr><td><a class="lab-link" href="lab.html?l=${r.id}">${crest(r.id)}</a></td><td class="num">${r.in}</td><td class="num">${r.out}</td><td class="num net ${cls}">${r.net > 0 ? "+" : ""}${r.net}</td></tr>`;
   }).join("");
   document.getElementById("standings").innerHTML =
     `<thead><tr><th>Lab</th><th class="num">In</th><th class="num">Out</th><th class="num">Net</th></tr></thead><tbody>${body}</tbody>`;
