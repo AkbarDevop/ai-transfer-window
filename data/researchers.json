@@ -1,59 +1,59 @@
 {
-  "_comment": "Per-researcher profile details, keyed by slug (lowercase, dashes). Photo refs (wiki/gh/photo) live on data/transfers.json; this file holds bio/details/links. Keep factual; null when unsure.",
+  "_comment": "Per-researcher profile details, keyed by slug. Photo refs (wiki/gh/photo) live on data/transfers.json. Details verified via primary sources (personal sites, Wikipedia, Google Scholar). careerPath org names match data/labs.json names where a crest should show.",
   "john-jumper": {
     "name": "John Jumper",
-    "nationality": "United States",
+    "nationality": "American",
     "bornYear": 1985,
-    "education": "PhD, Theoretical Chemistry, University of Chicago",
+    "education": "PhD, Theoretical Chemistry, University of Chicago (2017); MPhil, Cambridge; BS, Vanderbilt",
     "role": "Research",
     "knownFor": "AlphaFold",
-    "bio": "John Jumper led the development of AlphaFold, DeepMind's protein-structure-prediction system, and shared the 2024 Nobel Prize in Chemistry for it. In 2026 he left Google DeepMind for Anthropic.",
-    "careerPath": [{"org": "Google DeepMind", "years": "2017–2026"}, {"org": "Anthropic", "years": "2026–"}],
-    "links": {"wikipedia": "John M. Jumper", "github": null, "x": null, "site": null, "scholar": null}
+    "bio": "John Michael Jumper is an American computational chemist who led the development of AlphaFold, the AI system that predicts protein 3D structures from amino-acid sequences. He shared the 2024 Nobel Prize in Chemistry with Demis Hassabis and was a director at Google DeepMind. He is a Fellow of the Royal Society (2025) and a Breakthrough Prize laureate (2023).",
+    "careerPath": [{"org": "University of Chicago", "years": "2012–2017"}, {"org": "Google DeepMind", "years": "2017–2026"}, {"org": "Anthropic", "years": "2026–"}],
+    "links": {"wikipedia": "John M. Jumper", "github": null, "x": null, "site": null, "scholar": "https://scholar.google.com/citations?user=a5goOh8AAAAJ"}
   },
   "andrej-karpathy": {
     "name": "Andrej Karpathy",
-    "nationality": "Slovakia / Canada",
+    "nationality": "Slovak-Canadian",
     "bornYear": 1986,
-    "education": "PhD, Computer Science, Stanford University",
+    "education": "PhD, Computer Science, Stanford (2015); MS, UBC; BS, University of Toronto",
     "role": "Research",
-    "knownFor": "Tesla Autopilot · CS231n · founding OpenAI",
-    "bio": "Andrej Karpathy was a founding member of OpenAI and former Director of AI at Tesla, where he led the Autopilot vision team. A prolific educator, he is one of the most-followed figures in AI.",
-    "careerPath": [{"org": "OpenAI", "years": "2015–2017"}, {"org": "Tesla", "years": "2017–2022"}, {"org": "OpenAI", "years": "2023–2024"}, {"org": "Eureka Labs", "years": "2024–2026"}, {"org": "Anthropic", "years": "2026–"}],
-    "links": {"wikipedia": "Andrej Karpathy", "github": "karpathy", "x": "karpathy", "site": "https://karpathy.ai", "scholar": null}
+    "knownFor": "CS231n · Tesla Autopilot · founding OpenAI",
+    "bio": "Andrej Karpathy is a Slovak-Canadian AI researcher known for deep learning and computer vision. A founding member of OpenAI, he later served as Director of AI at Tesla (2017–2022) leading the Autopilot vision team, created Stanford's influential CS231n course, and founded the AI education startup Eureka Labs in 2024. He is widely followed for his educational content on neural networks.",
+    "careerPath": [{"org": "Stanford University", "years": "2011–2015"}, {"org": "OpenAI", "years": "2015–2017"}, {"org": "Tesla", "years": "2017–2022"}, {"org": "OpenAI", "years": "2023–2024"}, {"org": "Eureka Labs", "years": "2024–2026"}, {"org": "Anthropic", "years": "2026–"}],
+    "links": {"wikipedia": "Andrej Karpathy", "github": "karpathy", "x": "karpathy", "site": "https://karpathy.ai/", "scholar": "https://scholar.google.com/citations?user=l8WuQJgAAAAJ"}
   },
   "jan-leike": {
     "name": "Jan Leike",
-    "nationality": "Germany",
+    "nationality": "German",
     "bornYear": null,
-    "education": "PhD, Machine Learning, Australian National University",
+    "education": "PhD, Machine Learning, Australian National University (advisor: Marcus Hutter); University of Freiburg",
     "role": "AI Safety",
-    "knownFor": "Superalignment · RLHF",
-    "bio": "Jan Leike co-led OpenAI's Superalignment team and previously researched at DeepMind. He left OpenAI in 2024 over disagreements about safety priorities and joined Anthropic to continue alignment research.",
-    "careerPath": [{"org": "DeepMind", "years": "2016–2021"}, {"org": "OpenAI", "years": "2021–2024"}, {"org": "Anthropic", "years": "2024–"}],
-    "links": {"wikipedia": "Jan Leike", "github": null, "x": "janleike", "site": null, "scholar": null}
+    "knownFor": "Superalignment",
+    "bio": "Jan Leike is a German AI-safety researcher focused on aligning advanced AI systems. He co-led OpenAI's Superalignment team with Ilya Sutskever and contributed to RLHF, InstructGPT, ChatGPT and GPT-4 alignment before resigning in May 2024 over safety concerns. He then joined Anthropic, where he leads the Alignment Science team.",
+    "careerPath": [{"org": "DeepMind", "years": ""}, {"org": "OpenAI", "years": "2021–2024"}, {"org": "Anthropic", "years": "2024–"}],
+    "links": {"wikipedia": "Jan Leike", "github": null, "x": "janleike", "site": "https://jan.leike.name/", "scholar": "https://scholar.google.com/citations?user=beiWcokAAAAJ"}
   },
   "andrew-tulloch": {
     "name": "Andrew Tulloch",
     "nationality": "Australia",
     "bornYear": null,
-    "education": "Mathematics, University of Cambridge",
+    "education": "Mathematics, University of Cambridge; University of Sydney",
     "role": "Research",
-    "knownFor": "PyTorch · ML infrastructure",
-    "bio": "Andrew Tulloch spent over a decade at Meta/Facebook building PyTorch and ML infrastructure, then contributed to OpenAI's models. He co-founded Thinking Machines Lab in 2025 before joining Meta's superintelligence effort.",
-    "careerPath": [{"org": "Meta (Facebook)", "years": "2012–2023"}, {"org": "OpenAI", "years": "2023–2025"}, {"org": "Thinking Machines Lab", "years": "2025"}, {"org": "Meta", "years": "2025–"}],
-    "links": {"wikipedia": null, "github": "ajtulloch", "x": null, "site": "https://tullo.ch", "scholar": null}
+    "knownFor": "PyTorch · ML systems",
+    "bio": "Andrew Tulloch is a machine-learning researcher and engineer who grew up in Perth, Australia and studied mathematics at Sydney and Cambridge. He worked on ML systems at Facebook/Meta (including PyTorch), then at OpenAI where he contributed to GPT-4o, GPT-4.5 and o3, and co-founded Thinking Machines Lab. In 2025 he joined Meta's superintelligence effort.",
+    "careerPath": [{"org": "Meta (Facebook)", "years": ""}, {"org": "OpenAI", "years": ""}, {"org": "Thinking Machines Lab", "years": "2025"}, {"org": "Meta", "years": "2025–"}],
+    "links": {"wikipedia": null, "github": "ajtulloch", "x": null, "site": "https://tullo.ch", "scholar": "https://scholar.google.com/citations?user=duSEbnYAAAAJ"}
   },
   "barret-zoph": {
     "name": "Barret Zoph",
-    "nationality": "United States",
+    "nationality": null,
     "bornYear": null,
     "education": null,
     "role": "Research",
-    "knownFor": "Neural Architecture Search",
-    "bio": "Barret Zoph is known for neural architecture search at Google Brain and later served as VP of research / post-training at OpenAI. He co-founded Thinking Machines Lab before returning to OpenAI.",
-    "careerPath": [{"org": "Google Brain", "years": "2016–2022"}, {"org": "OpenAI", "years": "2022–2025"}, {"org": "Thinking Machines Lab", "years": "2025"}, {"org": "OpenAI", "years": "2026–"}],
-    "links": {"wikipedia": null, "github": null, "x": null, "site": "https://barretzoph.github.io", "scholar": null}
+    "knownFor": "Neural architecture search",
+    "bio": "Barret Zoph pioneered Neural Architecture Search (NAS) and AutoML, plus data-augmentation methods (AutoAugment, RandAugment, SpecAugment) and sparse mixture-of-experts models at Google Brain. He became VP of Research (Post-Training) at OpenAI, leading alignment, tool use, evaluations and ChatGPT, then co-founded Thinking Machines Lab as CTO alongside Mira Murati. He returned to OpenAI in January 2026.",
+    "careerPath": [{"org": "Google Brain", "years": ""}, {"org": "OpenAI", "years": ""}, {"org": "Thinking Machines Lab", "years": "2024–2026"}, {"org": "OpenAI", "years": "2026–"}],
+    "links": {"wikipedia": null, "github": null, "x": "barret_zoph", "site": "https://barretzoph.github.io", "scholar": "https://scholar.google.com/citations?user=H-BnRI0AAAAJ"}
   },
   "luke-metz": {
     "name": "Luke Metz",
@@ -61,42 +61,42 @@
     "bornYear": null,
     "education": null,
     "role": "Research",
-    "knownFor": "Learned optimizers · ChatGPT",
-    "bio": "Luke Metz worked on learned optimizers and meta-learning at Google Brain and on ChatGPT at OpenAI. He joined Thinking Machines Lab before returning to OpenAI.",
-    "careerPath": [{"org": "Google Brain", "years": "2017–2022"}, {"org": "OpenAI", "years": "2022–2025"}, {"org": "Thinking Machines Lab", "years": "2025"}, {"org": "OpenAI", "years": "2026–"}],
-    "links": {"wikipedia": null, "github": "lukemetz", "x": null, "site": "https://lukemetz.com", "scholar": null}
+    "knownFor": "Learned optimizers · meta-learning",
+    "bio": "Luke Metz is an AI researcher working at the intersection of research and product. He was a research scientist at Google Brain and then OpenAI, where he was part of the team behind the original ChatGPT, before joining Thinking Machines Lab. He returned to OpenAI in January 2026.",
+    "careerPath": [{"org": "Google Brain", "years": ""}, {"org": "OpenAI", "years": ""}, {"org": "Thinking Machines Lab", "years": "2025"}, {"org": "OpenAI", "years": "2026–"}],
+    "links": {"wikipedia": null, "github": "lukemetz", "x": "Luke_Metz", "site": "https://lukemetz.com", "scholar": null}
   },
   "sam-schoenholz": {
     "name": "Sam Schoenholz",
     "nationality": null,
     "bornYear": null,
-    "education": null,
+    "education": "PhD, Physics, University of Pennsylvania (2015)",
     "role": "Research",
-    "knownFor": "Deep-learning theory · JAX",
-    "bio": "Sam Schoenholz is a researcher with a physics background known for deep-learning theory and infinite-width networks at Google Brain. He joined Thinking Machines Lab before moving to OpenAI.",
-    "careerPath": [{"org": "Google Brain", "years": "2016–2025"}, {"org": "Thinking Machines Lab", "years": "2025"}, {"org": "OpenAI", "years": "2026–"}],
-    "links": {"wikipedia": null, "github": "sschoenholz", "x": null, "site": null, "scholar": null}
+    "knownFor": "neural-tangents · JAX",
+    "bio": "Samuel S. Schoenholz is a machine-learning researcher working at the intersection of deep learning and statistical physics, with a PhD in Physics from the University of Pennsylvania under Andrea Liu. As a senior research scientist at Google Brain he co-developed the neural-tangents library and worked on neural-network theory. After OpenAI and Thinking Machines Lab, he returned to OpenAI in January 2026 alongside Barret Zoph and Luke Metz.",
+    "careerPath": [{"org": "University of Pennsylvania", "years": "2010–2015"}, {"org": "Google Brain", "years": ""}, {"org": "OpenAI", "years": ""}, {"org": "Thinking Machines Lab", "years": "2025–2026"}, {"org": "OpenAI", "years": "2026–"}],
+    "links": {"wikipedia": null, "github": null, "x": null, "site": null, "scholar": "https://scholar.google.com/citations?user=mk-zQBsAAAAJ"}
   },
   "devendra-chaplot": {
     "name": "Devendra Chaplot",
     "nationality": "India",
     "bornYear": null,
-    "education": "PhD, Carnegie Mellon University; B.Tech, IIT Bombay",
+    "education": "PhD, Machine Learning, Carnegie Mellon (2021); B.Tech, IIT Bombay (2014)",
     "role": "Research",
-    "knownFor": "Embodied AI · founding Mistral",
-    "bio": "Devendra Chaplot was a founding member of Mistral AI after a PhD at Carnegie Mellon on embodied and navigation agents. He joined Thinking Machines Lab and then xAI.",
-    "careerPath": [{"org": "Mistral AI", "years": "2023–2025"}, {"org": "Thinking Machines Lab", "years": "2025"}, {"org": "xAI", "years": "2026–"}],
-    "links": {"wikipedia": null, "github": "devendrachaplot", "x": null, "site": "https://devendrachaplot.github.io", "scholar": null}
+    "knownFor": "Embodied AI · navigation",
+    "bio": "Devendra Singh Chaplot specializes in computer vision, robotics and embodied AI, known for autonomous navigation agents, semantic exploration and neural SLAM. After a PhD at Carnegie Mellon and time at Facebook AI Research, he joined Mistral AI as a founding-team member leading multimodal research. He was a founding member at Thinking Machines Lab from 2025, and in 2026 moved to xAI.",
+    "careerPath": [{"org": "IIT Bombay", "years": "2010–2014"}, {"org": "Carnegie Mellon University", "years": "2015–2021"}, {"org": "Facebook AI Research", "years": "2021–2023"}, {"org": "Mistral AI", "years": "2023–2025"}, {"org": "Thinking Machines Lab", "years": "2025–2026"}, {"org": "xAI", "years": "2026–"}],
+    "links": {"wikipedia": null, "github": "devendrachaplot", "x": "dchaplot", "site": "https://devendrachaplot.github.io", "scholar": "https://scholar.google.com/citations?user=1MSpdmQAAAAJ"}
   },
   "ross-nordeen": {
     "name": "Ross Nordeen",
-    "nationality": null,
+    "nationality": "United States",
     "bornYear": null,
-    "education": null,
+    "education": "Michigan Technological University",
     "role": "Engineering",
-    "knownFor": "xAI co-founder",
-    "bio": "Ross Nordeen was a co-founding member of xAI, working on infrastructure and engineering. In 2026 he became the last of xAI's founding cohort to depart, joining Anthropic.",
-    "careerPath": [{"org": "xAI", "years": "2023–2026"}, {"org": "Anthropic", "years": "2026–"}],
+    "knownFor": "AI compute infrastructure",
+    "bio": "Ross Nordeen is an infrastructure engineer and operations leader known for compute and data-center strategy at frontier AI labs. He spent roughly four years at Tesla as a technical program manager on supercomputing before becoming one of xAI's founding members in 2023, leading data-center planning. He departed xAI in early 2026 and joined Anthropic to lead compute expansion.",
+    "careerPath": [{"org": "Tesla", "years": ""}, {"org": "xAI", "years": "2023–2026"}, {"org": "Anthropic", "years": "2026–"}],
     "links": {"wikipedia": null, "github": null, "x": null, "site": null, "scholar": null}
   }
 }
