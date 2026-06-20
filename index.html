@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Transfer Window — frontier-lab researcher moves</title>
-  <meta name="description" content="A transfer-market tracker for AI researchers. Who's moving between OpenAI, Anthropic, Google DeepMind, Meta, xAI and more — the talent war, table-style." />
+  <title>AI Transfer Window — frontier-lab researcher transfers</title>
+  <meta name="description" content="The transfer market for AI researchers. Every named move between OpenAI, Anthropic, Google DeepMind, Meta, xAI and the rest, table-style like Transfermarkt." />
 
-  <!-- Open Graph / X card: makes the link look good when posted -->
   <meta property="og:title" content="AI Transfer Window" />
   <meta property="og:description" content="The transfer market for AI researchers. Track who's moving between the frontier labs." />
   <meta property="og:type" content="website" />
@@ -20,52 +19,67 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <span class="brand-mark">⚡</span>
-      <span class="brand-name">AI Transfer Window</span>
-      <span class="brand-tag">EST. 2026</span>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">⚡</span>
+        <span class="brand-name">AI Transfer<span class="brand-accent">Window</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#transfers">Transfers</a>
+        <a href="#balance">Balance</a>
+        <a id="navX" href="#" target="_blank" rel="noopener" class="nav-x">Follow on X</a>
+      </nav>
     </div>
-    <a class="x-cta" id="xFollow" href="#" target="_blank" rel="noopener">Follow on X</a>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1>The transfer market for <span class="grad">AI researchers</span>.</h1>
-      <p class="sub">
-        The frontier-lab talent war, table-style. Every named move between OpenAI,
-        Anthropic, Google DeepMind, Meta, xAI and the rest — curated by hand.
-      </p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" id="xFollow2" href="#" target="_blank" rel="noopener">Follow the window on X →</a>
-        <span class="hero-note">New signings posted the moment they break.</span>
-      </div>
-    </section>
+  <div class="subbar">
+    <div class="subbar-inner">
+      <div class="crumbs"><span>AI Researchers</span> <span class="sep">›</span> <strong>Transfers</strong> <span class="sep">›</span> <span>2026</span></div>
+      <div class="window-state">Window <span class="open-dot"></span> <strong>OPEN</strong></div>
+    </div>
+  </div>
 
-    <section class="board">
-      <div class="board-head">
-        <h2>Standings <span class="muted">— net talent flow</span></h2>
-      </div>
-      <div class="table-wrap">
-        <table class="standings" id="standings"></table>
-      </div>
-    </section>
+  <main class="wrap">
+    <div class="layout">
+      <!-- main column -->
+      <section class="col-main">
+        <div class="panel" id="transfers">
+          <div class="panel-head">
+            <h2>Latest transfers</h2>
+            <div class="filters" id="filters"></div>
+          </div>
+          <div class="table-scroll">
+            <table class="tm-table" id="transferTable"></table>
+          </div>
+          <div class="panel-foot" id="count"></div>
+        </div>
+      </section>
 
-    <section class="feed-section">
-      <div class="feed-head">
-        <h2>Latest transfers</h2>
-        <div class="filters" id="filters"></div>
-      </div>
-      <div class="feed" id="feed"></div>
-    </section>
+      <!-- sidebar -->
+      <aside class="col-side">
+        <div class="panel" id="balance">
+          <div class="panel-head"><h2>Transfer balance</h2></div>
+          <table class="tm-table standings" id="standings"></table>
+          <div class="panel-foot subtle">Net = signings in minus departures out.</div>
+        </div>
+
+        <div class="panel promo">
+          <div class="promo-body">
+            <div class="promo-k">Deadline day never ends.</div>
+            <p>New signings posted the moment they break.</p>
+            <a class="btn-x" id="sideX" href="#" target="_blank" rel="noopener">Follow the window on X →</a>
+          </div>
+        </div>
+      </aside>
+    </div>
   </main>
 
   <footer class="footer">
-    <p>
-      Curated, not automated. Spotted a move I missed?
-      <a id="xReply" href="#" target="_blank" rel="noopener">Reply on X</a>.
-    </p>
-    <p class="fine">Comp figures are reported/rumored where labeled. Not affiliated with any lab.</p>
+    <div class="footer-inner">
+      <span>Curated, not automated. Spotted a move I missed? <a id="footX" href="#" target="_blank" rel="noopener">Tell me on X</a>.</span>
+      <span class="fine">Comp figures are reported / rumored where labeled. Not affiliated with any lab. Crest marks belong to their owners.</span>
+    </div>
   </footer>
 
   <script src="app.js"></script>

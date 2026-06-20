@@ -1,9 +1,9 @@
 {
-  "openai":    { "name": "OpenAI",                 "short": "OAI", "color": "#10A37F" },
-  "anthropic": { "name": "Anthropic",              "short": "ANT", "color": "#CC785C" },
-  "deepmind":  { "name": "Google DeepMind",        "short": "GDM", "color": "#4285F4" },
-  "meta":      { "name": "Meta Superintelligence", "short": "MSL", "color": "#0866FF" },
-  "xai":       { "name": "xAI",                    "short": "XAI", "color": "#9CA3AF" },
-  "ssi":       { "name": "Safe Superintelligence", "short": "SSI", "color": "#6E56CF" },
-  "tml":       { "name": "Thinking Machines Lab",  "short": "TML", "color": "#F2994A" }
+  "openai":    { "name": "OpenAI",                 "short": "OAI", "color": "#0a0a0a", "logo": "logos/openai.svg" },
+  "anthropic": { "name": "Anthropic",              "short": "ANT", "color": "#CC785C", "logo": "logos/anthropic.svg" },
+  "deepmind":  { "name": "Google DeepMind",        "short": "GDM", "color": "#4285F4", "logo": "logos/googlegemini.svg" },
+  "meta":      { "name": "Meta Superintelligence", "short": "MSL", "color": "#0866FF", "logo": "logos/meta.svg" },
+  "xai":       { "name": "xAI",                    "short": "XAI", "color": "#0a0a0a", "logo": "logos/x.svg" },
+  "ssi":       { "name": "Safe Superintelligence", "short": "SSI", "color": "#6E56CF", "logo": null },
+  "tml":       { "name": "Thinking Machines Lab",  "short": "TML", "color": "#D9893B", "logo": null }
 }
