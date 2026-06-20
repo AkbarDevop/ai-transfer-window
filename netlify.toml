@@ -1,0 +1,5 @@
+# Static site, no build step. Deploy with:
+#   netlify deploy --prod --dir .
+[build]
+  publish = "."
+  command = ""

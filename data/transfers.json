@@ -1,0 +1,141 @@
+{
+  "_comment": "Frontier-lab AI researcher transfers. Curated by hand. Each entry is a NAMED, publicly-reported move. fee = reported/rumored comp (mark rumored:true if disputed). Keep it accurate — every row should be defensible with a source link.",
+  "transfers": [
+    {
+      "id": "jumper-gdm-ant-2026-06",
+      "name": "John Jumper",
+      "title": "Nobel laureate, AlphaFold co-creator",
+      "from": "deepmind",
+      "to": "anthropic",
+      "date": "2026-06-19",
+      "role": "Research",
+      "note": "Marquee signing. Nobel Prize in Chemistry 2024 for AlphaFold. Confirmed via his own X post.",
+      "fee": null,
+      "rumored": false,
+      "sources": [
+        "https://techstartups.com/2026/06/19/nobel-prize-winning-ai-researcher-john-jumper-leaves-google-deepmind-for-anthropic/",
+        "https://gulfnews.com/technology/companies/nobel-winning-ai-scientist-quits-google-deepmind-for-anthropic-in-major-talent-shake-up-1.500580793"
+      ]
+    },
+    {
+      "id": "karpathy-oai-ant-2026-05",
+      "name": "Andrej Karpathy",
+      "title": "Founding OpenAI member, ex-Tesla AI",
+      "from": "openai",
+      "to": "anthropic",
+      "date": "2026-05-15",
+      "role": "Research",
+      "note": "One of the most-followed names in AI. Date approximate.",
+      "fee": null,
+      "rumored": false,
+      "sources": [
+        "https://www.yahoo.com/news/openai-deepmind-losing-engineers-anthropic-110721776.html"
+      ]
+    },
+    {
+      "id": "nordeen-xai-ant-2026",
+      "name": "Ross Nordeen",
+      "title": "Last of xAI's 11 co-founders to leave",
+      "from": "xai",
+      "to": "anthropic",
+      "date": "2026-04-01",
+      "role": "Engineering",
+      "note": "Completes the unwind of xAI's founding team. Date approximate.",
+      "fee": null,
+      "rumored": false,
+      "sources": [
+        "https://techfundingnews.com/anthropic-top-10-hires/"
+      ]
+    },
+    {
+      "id": "tulloch-tml-meta-2025-10",
+      "name": "Andrew Tulloch",
+      "title": "Thinking Machines Lab co-founder",
+      "from": "tml",
+      "to": "meta",
+      "date": "2025-10-01",
+      "role": "Research",
+      "note": "Headline package reported at ~$1.5B over 6 years. Meta called the figure \"inaccurate and ridiculous\" — treat as rumored.",
+      "fee": "~$1.5B / 6yr (disputed)",
+      "rumored": true,
+      "sources": [
+        "https://thenextweb.com/news/meta-thinking-machines-lab-talent-raid"
+      ]
+    },
+    {
+      "id": "zoph-tml-oai-2026-01",
+      "name": "Barret Zoph",
+      "title": "Returned to OpenAI",
+      "from": "tml",
+      "to": "openai",
+      "date": "2026-01-15",
+      "role": "Research",
+      "note": "Part of a cluster move back to OpenAI from Thinking Machines Lab.",
+      "fee": null,
+      "rumored": false,
+      "sources": [
+        "https://thenextweb.com/news/meta-thinking-machines-lab-talent-raid"
+      ]
+    },
+    {
+      "id": "metz-tml-oai-2026-01",
+      "name": "Luke Metz",
+      "title": "ex-OpenAI, ex-Thinking Machines Lab",
+      "from": "tml",
+      "to": "openai",
+      "date": "2026-01-15",
+      "role": "Research",
+      "note": "Returned to OpenAI alongside Zoph and Schoenholz.",
+      "fee": null,
+      "rumored": false,
+      "sources": [
+        "https://thenextweb.com/news/meta-thinking-machines-lab-talent-raid"
+      ]
+    },
+    {
+      "id": "schoenholz-tml-oai-2026-01",
+      "name": "Sam Schoenholz",
+      "title": "ex-Google Brain, ex-Thinking Machines Lab",
+      "from": "tml",
+      "to": "openai",
+      "date": "2026-01-15",
+      "role": "Research",
+      "note": "Third of the Thinking Machines Lab cluster to rejoin OpenAI.",
+      "fee": null,
+      "rumored": false,
+      "sources": [
+        "https://thenextweb.com/news/meta-thinking-machines-lab-talent-raid"
+      ]
+    },
+    {
+      "id": "chaplot-tml-xai-2026-03",
+      "name": "Devendra Chaplot",
+      "title": "ex-Mistral, ex-Thinking Machines Lab",
+      "from": "tml",
+      "to": "xai",
+      "date": "2026-03-01",
+      "role": "Research",
+      "note": "Thinking Machines Lab continues to bleed talent in multiple directions.",
+      "fee": null,
+      "rumored": false,
+      "sources": [
+        "https://thenextweb.com/news/meta-thinking-machines-lab-talent-raid"
+      ]
+    },
+    {
+      "id": "leike-oai-ant-2024-05",
+      "name": "Jan Leike",
+      "title": "Former OpenAI superalignment co-lead",
+      "from": "openai",
+      "to": "anthropic",
+      "date": "2024-05-28",
+      "role": "Safety",
+      "note": "The move that arguably opened the transfer window. Left over safety priorities.",
+      "fee": null,
+      "rumored": false,
+      "sources": [
+        "https://www.yahoo.com/news/openai-deepmind-losing-engineers-anthropic-110721776.html"
+      ]
+    }
+  ]
+}

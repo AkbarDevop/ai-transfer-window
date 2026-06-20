@@ -1,0 +1,9 @@
+{
+  "openai":    { "name": "OpenAI",                 "short": "OAI", "color": "#10A37F" },
+  "anthropic": { "name": "Anthropic",              "short": "ANT", "color": "#CC785C" },
+  "deepmind":  { "name": "Google DeepMind",        "short": "GDM", "color": "#4285F4" },
+  "meta":      { "name": "Meta Superintelligence", "short": "MSL", "color": "#0866FF" },
+  "xai":       { "name": "xAI",                    "short": "XAI", "color": "#9CA3AF" },
+  "ssi":       { "name": "Safe Superintelligence", "short": "SSI", "color": "#6E56CF" },
+  "tml":       { "name": "Thinking Machines Lab",  "short": "TML", "color": "#F2994A" }
+}
