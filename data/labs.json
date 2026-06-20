@@ -4,6 +4,6 @@
   "deepmind":  { "name": "Google DeepMind",        "short": "GDM", "color": "#4285F4", "logo": "logos/googlegemini.svg" },
   "meta":      { "name": "Meta Superintelligence", "short": "MSL", "color": "#0866FF", "logo": "logos/meta.svg" },
   "xai":       { "name": "xAI",                    "short": "XAI", "color": "#0a0a0a", "logo": "logos/x.svg" },
-  "ssi":       { "name": "Safe Superintelligence", "short": "SSI", "color": "#6E56CF", "logo": null },
-  "tml":       { "name": "Thinking Machines Lab",  "short": "TML", "color": "#D9893B", "logo": null }
+  "ssi":       { "name": "Safe Superintelligence", "short": "SSI", "color": "#6E56CF", "logo": null, "favicon": "ssi.inc" },
+  "tml":       { "name": "Thinking Machines Lab",  "short": "TML", "color": "#D9893B", "logo": null, "favicon": "thinkingmachines.ai" }
 }

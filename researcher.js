@@ -17,12 +17,36 @@ const ORG2LAB = {
 };
 const orgLab = name => ORG2LAB[String(name || "").toLowerCase().trim()] || null;
 
+// universities / companies that aren't tracked labs -> favicon logos
+const ORG_DOMAIN = {
+  "stanford university": "stanford.edu", "university of chicago": "uchicago.edu",
+  "tesla": "tesla.com", "google brain": "research.google", "google": "google.com",
+  "eureka labs": "eurekalabs.ai", "carnegie mellon university": "cmu.edu", "iit bombay": "iitb.ac.in",
+  "facebook ai research": "ai.meta.com", "fair": "ai.meta.com", "mistral ai": "mistral.ai", "mistral": "mistral.ai",
+  "university of pennsylvania": "upenn.edu", "michigan technological university": "mtu.edu",
+  "university of cambridge": "cam.ac.uk", "university of sydney": "sydney.edu.au",
+  "university of toronto": "utoronto.ca", "australian national university": "anu.edu.au",
+  "usc information sciences institute": "isi.edu", "university of freiburg": "uni-freiburg.de",
+  "character.ai": "character.ai", "character ai": "character.ai", "perplexity": "perplexity.ai"
+};
+const faviconUrl = d => `https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=64`;
+
 function crestBadge(labId) {
   const lab = LABS[labId] || { short: "?", color: "#888", logo: null, name: labId };
-  const inner = lab.logo
-    ? `<span class="crest-logo" style="background:${lab.color};-webkit-mask-image:url(${lab.logo});mask-image:url(${lab.logo})"></span>`
-    : `<span class="crest-mono" style="color:${lab.color}">${lab.short}</span>`;
+  let inner;
+  if (lab.logo) inner = `<span class="crest-logo" style="background:${lab.color};-webkit-mask-image:url(${lab.logo});mask-image:url(${lab.logo})"></span>`;
+  else if (lab.favicon) inner = `<img class="crest-img" src="${faviconUrl(lab.favicon)}" alt="" loading="lazy">`;
+  else inner = `<span class="crest-mono" style="color:${lab.color}">${lab.short}</span>`;
   return `<span class="crest-badge" title="${esc(lab.name)}">${inner}</span>`;
+}
+
+// badge for any career-path org: tracked lab crest -> favicon logo -> initials
+function orgBadge(org) {
+  const lid = orgLab(org);
+  if (lid) return crestBadge(lid);
+  const dom = ORG_DOMAIN[String(org || "").toLowerCase().trim()];
+  if (dom) return `<span class="crest-badge" title="${esc(org)}"><img class="crest-img" src="${faviconUrl(dom)}" alt="" loading="lazy"></span>`;
+  return `<span class="crest-badge" title="${esc(org)}"><span class="crest-mono" style="color:#8b97a8">${esc((org || "?").slice(0, 3).toUpperCase())}</span></span>`;
 }
 function crest(labId) {
   const lab = LABS[labId] || { name: labId };
@@ -33,6 +57,7 @@ async function getPhotoUrl(tr, info) {
   if (tr && tr.photo) return tr.photo;
   if (tr && tr.gh) return `https://github.com/${tr.gh}.png?size=200`;
   if (info && info.links && info.links.github) return `https://github.com/${info.links.github}.png?size=200`;
+  // Wikipedia photo
   const wiki = (tr && tr.wiki) || (info && info.links && info.links.wikipedia);
   if (wiki && !/^https?:/.test(wiki)) {
     try {
@@ -40,6 +65,9 @@ async function getPhotoUrl(tr, info) {
       if (r.ok) { const j = await r.json(); if (j.thumbnail) return j.thumbnail.source; }
     } catch {}
   }
+  // X/Twitter avatar via unavatar (last resort)
+  const x = (tr && tr.x) || (info && info.links && info.links.x);
+  if (x) return `https://unavatar.io/x/${x}?fallback=false`;
   return null;
 }
 
@@ -124,13 +152,11 @@ async function boot() {
 
   // career path
   const path = (info && info.careerPath) || [];
-  const pathHtml = path.length ? path.map((p, i) => {
-    const lid = orgLab(p.org);
-    const badge = lid ? crestBadge(lid) : `<span class="crest-badge"><span class="crest-mono" style="color:#8b97a8">${esc((p.org || "?").slice(0, 3).toUpperCase())}</span></span>`;
-    return `<div class="cp-item ${i === path.length - 1 ? "now" : ""}">
-      ${badge}<div class="cp-body"><div class="cp-org">${esc(p.org)}</div><div class="cp-years">${esc(p.years || "")}</div></div>
-    </div>`;
-  }).join("") : `<div class="empty">Career path not yet recorded.</div>`;
+  const pathHtml = path.length ? path.map((p, i) =>
+    `<div class="cp-item ${i === path.length - 1 ? "now" : ""}">
+      ${orgBadge(p.org)}<div class="cp-body"><div class="cp-org">${esc(p.org)}</div><div class="cp-years">${esc(p.years || "")}</div></div>
+    </div>`
+  ).join("") : `<div class="empty">Career path not yet recorded.</div>`;
 
   const fact = (k, v) => v ? `<tr><th>${k}</th><td>${esc(v)}</td></tr>` : "";
   const factsHtml = `

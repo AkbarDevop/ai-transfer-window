@@ -87,6 +87,7 @@ a:hover { text-decoration: underline; }
 .crest-badge { width: 26px; height: 26px; border-radius: 6px; border: 1px solid var(--line); background: #fff; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
 .crest-logo { width: 16px; height: 16px; -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; }
 .crest-mono { font-size: 9px; font-weight: 800; letter-spacing: -0.02em; }
+.crest-img { width: 17px; height: 17px; object-fit: contain; border-radius: 3px; }
 .crest-name { font-weight: 600; color: var(--text); font-size: 13px; white-space: nowrap; }
 .move-arrow { color: var(--muted); font-weight: 800; padding: 0 2px; }
 
@@ -223,6 +224,33 @@ img, .photo { max-width: 100%; }
 /* fade hint when table scrolls horizontally on small screens */
 @media (max-width: 700px) {
   .table-scroll { -webkit-overflow-scrolling: touch; }
+}
+
+/* ===== responsive transfer rows (no horizontal scroll) ===== */
+.tlist { }
+.trow { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.trow:last-child { border-bottom: none; }
+.trow:nth-child(even) { background: var(--row-alt); }
+.trow:hover { background: var(--row-hover); }
+.tr-av { flex: 0 0 auto; display: inline-flex; }
+.tr-av .avatar { width: 36px; height: 36px; }
+.tr-idy { flex: 1 1 110px; min-width: 0; display: flex; flex-direction: column; }
+.tr-name { font-weight: 700; color: var(--navy); font-size: 14px; line-height: 1.15; text-decoration: none; }
+.tr-name:hover { color: var(--blue-link); text-decoration: underline; }
+.tr-title { color: var(--muted); font-size: 11.5px; line-height: 1.25; margin-top: 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tr-move { flex: 0 0 auto; display: flex; align-items: center; gap: 5px; }
+.tr-tags { flex: 0 0 auto; width: 82px; }
+.tr-date { flex: 0 0 auto; width: 92px; text-align: right; font-size: 12.5px; color: var(--text); font-variant-numeric: tabular-nums; }
+.tr-fee { flex: 0 0 auto; width: 120px; text-align: right; }
+.tr-fee .fee { white-space: normal; }
+.tr-share { flex: 0 0 auto; width: 16px; text-align: center; color: var(--muted); font-weight: 700; text-decoration: none; }
+.tr-share:hover { color: var(--blue-link); }
+@media (max-width: 620px) {
+  .trow { gap: 9px; padding: 9px 11px; }
+  .tr-tags, .tr-share { display: none; }
+  .tr-date { width: auto; min-width: 52px; font-size: 11.5px; }
+  .tr-fee { width: auto; max-width: 96px; font-size: 12px; }
+  .tm-table .crest-name { display: none; }
 }
 
 /* ===== clickable researcher names ===== */

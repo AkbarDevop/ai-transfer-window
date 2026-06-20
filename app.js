@@ -26,11 +26,13 @@ function timeAgo(iso) {
   return Math.round(s / 86400) + "d";
 }
 
+function faviconUrl(domain) { return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`; }
 function crestBadge(labId) {
   const lab = LABS[labId] || { short: "?", color: "#888", logo: null, name: labId };
-  const inner = lab.logo
-    ? `<span class="crest-logo" style="background:${lab.color};-webkit-mask-image:url(${lab.logo});mask-image:url(${lab.logo})"></span>`
-    : `<span class="crest-mono" style="color:${lab.color}">${lab.short}</span>`;
+  let inner;
+  if (lab.logo) inner = `<span class="crest-logo" style="background:${lab.color};-webkit-mask-image:url(${lab.logo});mask-image:url(${lab.logo})"></span>`;
+  else if (lab.favicon) inner = `<img class="crest-img" src="${faviconUrl(lab.favicon)}" alt="" loading="lazy">`;
+  else inner = `<span class="crest-mono" style="color:${lab.color}">${lab.short}</span>`;
   return `<span class="crest-badge" title="${esc(lab.name)}">${inner}</span>`;
 }
 function crest(labId) {
@@ -44,6 +46,7 @@ function avColor(t) {
 function photoUrl(t) {
   if (t.photo) return t.photo;
   if (t.gh) return `https://github.com/${t.gh}.png?size=160`;
+  if (t.x) return `https://unavatar.io/x/${t.x}?fallback=false`;
   return null;
 }
 function avatar(t, cls) {
@@ -126,24 +129,27 @@ function renderSpotlight() {
 /* ---------- News ticker ---------- */
 async function renderNews() {
   const box = document.getElementById("newsTicker");
-  let items = [];
+  let items = [], fetchedAt = null;
   try {
     const r = await fetch("/api/news");
-    if (r.ok) items = await r.json();
+    if (r.ok) { const d = await r.json(); items = d.items || d; fetchedAt = d.fetchedAt; }
   } catch { /* offline */ }
   if (!Array.isArray(items) || !items.length) {
-    box.innerHTML = `<div class="loading">News ticker is live once deployed (pulls AI lab headlines from Hacker News).</div>`;
+    box.innerHTML = `<div class="loading">News ticker is live once deployed (auto-refreshed from Hacker News + Reddit every 30 min).</div>`;
     return;
   }
+  const liveEl = document.querySelector("#news .live");
+  if (liveEl && fetchedAt) liveEl.textContent = `updated ${timeAgo(new Date(fetchedAt).toISOString())} ago · live`;
+
   const cols = [[], [], []];
-  items.slice(0, 18).forEach((n, i) => cols[i % 3].push(n));
+  items.slice(0, 24).forEach((n, i) => cols[i % 3].push(n));
   box.innerHTML = cols.map(col => `<div>${col.map(n => {
-    let host = ""; try { host = new URL(n.url).hostname.replace(/^www\./, ""); } catch {}
+    let host = n.source || ""; if (!host) { try { host = new URL(n.url).hostname.replace(/^www\./, ""); } catch {} }
     return `<div class="tick">
       <span class="when">${timeAgo(n.date)}</span>
       <span class="body">
         <a class="t" href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a>
-        <span class="src">${esc(host)} · <span class="pts">▲ ${n.points}</span> · ${n.comments} comments</span>
+        <span class="src">${esc(host)} · <span class="pts">▲ ${n.points}</span> · ${n.comments || 0} comments</span>
       </span>
     </div>`;
   }).join("")}</div>`).join("");
@@ -186,26 +192,24 @@ function renderTransfers() {
     .filter(t => !q || (t.name + " " + (t.title || "") + " " + labName(t.from) + " " + labName(t.to)).toLowerCase().includes(q))
     .slice().sort((a, b) => b.date.localeCompare(a.date));
 
-  const rows = list.map((t, i) => {
+  const rows = list.map((t) => {
     const roleTag = t.rumored ? `<span class="tag rumor">Rumored</span>` : (t.role ? `<span class="tag">${esc(t.role)}</span>` : "");
     const feeCls = t.fee ? (t.rumored ? "rumor" : "has") : "none";
-    return `<tr title="${esc(t.note)}">
-      <td class="rank">${i + 1}</td>
-      <td><div class="player"><a href="${profileLink(t)}" class="pavatar">${avatar(t, "avatar")}</a><span>
-        <a class="pname plink" href="${profileLink(t)}">${esc(t.name)}</a>
-        ${t.title ? `<span class="ptitle">${esc(t.title)}</span>` : ""}
-      </span></div></td>
-      <td>${crest(t.from)}</td>
-      <td>${crest(t.to)}</td>
-      <td>${roleTag}</td>
-      <td class="date">${fmtDate(t.date)}</td>
-      <td class="right"><span class="fee ${feeCls}">${t.fee ? esc(t.fee) : "—"}</span></td>
-      <td class="right"><a class="share" href="${shareLink(t)}" target="_blank" rel="noopener" title="Share on X">↗</a></td>
-    </tr>`;
+    return `<div class="trow" title="${esc(t.note)}">
+      <a class="tr-av" href="${profileLink(t)}">${avatar(t, "avatar")}</a>
+      <div class="tr-idy">
+        <a class="tr-name plink" href="${profileLink(t)}">${esc(t.name)}</a>
+        ${t.title ? `<span class="tr-title">${esc(t.title)}</span>` : ""}
+      </div>
+      <div class="tr-move" title="${esc(labName(t.from))} → ${esc(labName(t.to))}">${crestBadge(t.from)}<span class="move-arrow">→</span>${crestBadge(t.to)}</div>
+      <div class="tr-tags">${roleTag}</div>
+      <div class="tr-date">${fmtDate(t.date)}</div>
+      <div class="tr-fee"><span class="fee ${feeCls}">${t.fee ? esc(t.fee) : "—"}</span></div>
+      <a class="tr-share share" href="${shareLink(t)}" target="_blank" rel="noopener" title="Share on X">↗</a>
+    </div>`;
   }).join("");
 
-  document.getElementById("transferTable").innerHTML =
-    `<thead><tr><th class="rank">#</th><th>Researcher</th><th>From</th><th>To</th><th>Role</th><th>Date</th><th class="right">Fee</th><th></th></tr></thead><tbody>${rows || `<tr><td colspan="8" class="empty">No matches.</td></tr>`}</tbody>`;
+  document.getElementById("transferTable").innerHTML = rows || `<div class="empty" style="padding:16px 14px">No matches.</div>`;
   document.getElementById("count").textContent =
     `${list.length} transfer${list.length === 1 ? "" : "s"}${activeFilter === "all" ? "" : " · " + labName(activeFilter)}${q ? ` · “${searchQuery}”` : ""}`;
   hydratePhotos();
@@ -249,15 +253,26 @@ function wireSearch() {
 
 async function boot() {
   try {
-    const [labs, seed, dynamic] = await Promise.all([
+    const [labs, seed, researchers, dynamic] = await Promise.all([
       fetch("data/labs.json").then(r => r.json()),
       fetch("data/transfers.json").then(r => r.json()),
+      fetch("data/researchers.json").then(r => r.json()).catch(() => ({})),
       fetch("/api/transfers").then(r => (r.ok ? r.json() : [])).catch(() => [])
     ]);
     LABS = labs;
     const byId = new Map();
     [...(seed.transfers || seed), ...(Array.isArray(dynamic) ? dynamic : [])].forEach(t => byId.set(t.id, t));
-    TRANSFERS = [...byId.values()];
+    TRANSFERS = [...byId.values()].map(t => {
+      // backfill a photo source from researcher links only when the transfer has none
+      if (!t.photo && !t.gh && !t.wiki && !t.x) {
+        const r = researchers[slugify(t.name)];
+        if (r && r.links) {
+          if (r.links.github) t.gh = r.links.github;
+          else if (r.links.x) t.x = r.links.x;
+        }
+      }
+      return t;
+    });
 
     renderSpotlight();
     renderMinis();
