@@ -52,6 +52,7 @@
     {
       "id": "tulloch-tml-meta-2025-10",
       "name": "Andrew Tulloch",
+      "gh": "ajtulloch",
       "title": "Thinking Machines Lab co-founder",
       "from": "tml",
       "to": "meta",
@@ -67,6 +68,7 @@
     {
       "id": "zoph-tml-oai-2026-01",
       "name": "Barret Zoph",
+      "photo": "https://barretzoph.github.io/images/headshot.jpg",
       "title": "Returned to OpenAI",
       "from": "tml",
       "to": "openai",
@@ -82,6 +84,7 @@
     {
       "id": "metz-tml-oai-2026-01",
       "name": "Luke Metz",
+      "photo": "https://lukemetz.com/assets/images/me3.jpeg",
       "title": "ex-OpenAI, ex-Thinking Machines Lab",
       "from": "tml",
       "to": "openai",
@@ -112,6 +115,7 @@
     {
       "id": "chaplot-tml-xai-2026-03",
       "name": "Devendra Chaplot",
+      "gh": "devendrachaplot",
       "title": "ex-Mistral, ex-Thinking Machines Lab",
       "from": "tml",
       "to": "xai",

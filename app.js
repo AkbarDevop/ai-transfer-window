@@ -38,8 +38,21 @@ function avColor(t) {
   const c = (LABS[t.to] || {}).color || "#16233c";
   return /^#0a0a0a$/i.test(c) ? "#16233c" : c;
 }
+// resolve a synchronous photo URL (direct url or GitHub avatar); wiki is async
+function photoUrl(t) {
+  if (t.photo) return t.photo;
+  if (t.gh) return `https://github.com/${t.gh}.png?size=160`;
+  return null;
+}
 function avatar(t, cls) {
-  return `<span class="${cls}" data-wiki="${esc(t.wiki || "")}" style="background:${avColor(t)}">${initials(t.name)}</span>`;
+  const url = photoUrl(t);
+  if (url) {
+    return `<span class="${cls} has-photo" style="background:${avColor(t)};background-image:url(${esc(url)});background-size:cover;background-position:center top"></span>`;
+  }
+  if (t.wiki) {
+    return `<span class="${cls}" data-wiki="${esc(t.wiki)}" style="background:${avColor(t)}">${initials(t.name)}</span>`;
+  }
+  return `<span class="${cls}" style="background:${avColor(t)}">${initials(t.name)}</span>`;
 }
 function shareLink(t) {
   const tag = t.rumored ? "🔮 RUMOR" : "🔁";
@@ -87,9 +100,12 @@ function renderSpotlight() {
     const verb = t.rumored ? "linked with" : "joins";
     const kicker = t.rumored ? "Rumour" : ((t.role || "Transfer") + " · Official");
     const sub = `From ${labName(t.from)}${t.fee ? " · " + esc(t.fee) : ""}`;
-    const photo = t.wiki
-      ? `<div class="photo" data-wiki="${esc(t.wiki)}"></div>`
-      : `<div class="photo mono" style="background:${avColor(t)}">${initials(t.name)}</div>`;
+    const url = photoUrl(t);
+    const photo = url
+      ? `<div class="photo has-photo" style="background-image:url(${esc(url)});background-size:cover;background-position:center top"></div>`
+      : t.wiki
+        ? `<div class="photo" data-wiki="${esc(t.wiki)}"></div>`
+        : `<div class="photo mono" style="background:${avColor(t)}">${initials(t.name)}</div>`;
     return `<article class="spot ${lead ? "lead" : ""}">
       ${photo}<div class="scrim"></div>
       <div class="meta">
