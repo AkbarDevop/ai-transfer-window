@@ -33,15 +33,13 @@
     "name": "Safe Superintelligence",
     "short": "SSI",
     "color": "#6E56CF",
-    "logo": null,
-    "favicon": "ssi.inc"
+    "logo": null
   },
   "tml": {
     "name": "Thinking Machines Lab",
     "short": "TML",
     "color": "#D9893B",
-    "logo": null,
-    "favicon": "thinkingmachines.ai"
+    "logo": "logos/tml.svg"
   },
   "characterai": {
     "name": "Character.AI",

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Researchers — AI Transfer Window</title>
+  <meta name="description" content="Directory of tracked frontier AI researchers — current lab, what they're known for, and their full transfer history." />
+  <link rel="icon" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/"><span class="brand-mark">⚡</span><span class="brand-name">AI Transfer<span class="brand-accent">Window</span></span></a>
+      <div class="search"><input id="search" type="search" placeholder="Search researchers…" autocomplete="off" /><span class="search-ic">⌕</span></div>
+      <a id="navX" href="#" target="_blank" rel="noopener" class="nav-x">Follow on X</a>
+    </div>
+  </header>
+  <nav class="subnav">
+    <div class="subnav-inner">
+      <a href="/">Home</a>
+      <a href="/researchers.html" class="active">Researchers</a>
+      <a href="/models.html">Models</a>
+      <a href="/#news">News</a>
+      <a href="/#balance">Tables</a>
+      <span class="subnav-right">Window <span class="open-dot"></span> <strong>OPEN</strong></span>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="sec-head"><h2>Researchers</h2></div>
+    <div class="panel">
+      <div class="panel-head"><h2>The directory</h2><div class="filters" id="filters"></div></div>
+      <div style="padding:14px"><div class="dir-grid" id="dir"></div></div>
+      <div class="panel-foot" id="count"></div>
+    </div>
+  </main>
+
+  <footer class="footer"><div class="footer-fine">Curated, not automated. Click a researcher for their full profile, career path and news.</div></footer>
+  <script src="researchers-dir.js"></script>
+</body>
+</html>

@@ -52,9 +52,9 @@ function photoUrl(t) {
 }
 function avatar(t, cls) {
   const url = photoUrl(t);
-  if (url) return `<span class="${cls} has-photo" style="background:${avColor(t)};background-image:url(${esc(url)});background-size:cover;background-position:center top"></span>`;
+  if (url) return `<span class="${cls} has-photo" style="background:${avColor(t)};background-image:url(${esc(url)});background-size:cover;background-position:center"></span>`;
   if (t.wiki) return `<span class="${cls}" data-wiki="${esc(t.wiki)}"${t.x ? ` data-x="${esc(t.x)}"` : ""} style="background:${avColor(t)}">${initials(t.name)}</span>`;
-  if (t.x) return `<span class="${cls} has-photo" style="background:${avColor(t)};background-image:url(${xAvatar(t.x)});background-size:cover;background-position:center top"></span>`;
+  if (t.x) return `<span class="${cls} has-photo" style="background:${avColor(t)};background-image:url(${xAvatar(t.x)});background-size:cover;background-position:center"></span>`;
   return `<span class="${cls}" style="background:${avColor(t)}">${initials(t.name)}</span>`;
 }
 function shareLink(t) {
@@ -90,7 +90,7 @@ function hydratePhotos() {
     if (!url) return;
     el.style.backgroundImage = `url(${url})`;
     el.style.backgroundSize = "cover";
-    el.style.backgroundPosition = "center top";
+    el.style.backgroundPosition = "center";
     el.classList.add("has-photo");
     if (el.classList.contains("photo")) el.classList.remove("mono");
     else el.textContent = ""; // hide initials on avatar chips
@@ -106,11 +106,11 @@ function renderSpotlight() {
     const sub = `From ${labName(t.from)}${t.fee ? " · " + esc(t.fee) : ""}`;
     const url = photoUrl(t);
     const photo = url
-      ? `<div class="photo has-photo" style="background-image:url(${esc(url)});background-size:cover;background-position:center top"></div>`
+      ? `<div class="photo has-photo" style="background-image:url(${esc(url)});background-size:cover;background-position:center"></div>`
       : t.wiki
         ? `<div class="photo" data-wiki="${esc(t.wiki)}"${t.x ? ` data-x="${esc(t.x)}"` : ""}></div>`
         : t.x
-          ? `<div class="photo has-photo" style="background-image:url(${xAvatar(t.x)});background-size:cover;background-position:center top"></div>`
+          ? `<div class="photo has-photo" style="background-image:url(${xAvatar(t.x)});background-size:cover;background-position:center"></div>`
           : `<div class="photo mono" style="background:${avColor(t)}">${initials(t.name)}</div>`;
     return `<article class="spot ${lead ? "lead" : ""}">
       ${photo}<div class="scrim"></div>

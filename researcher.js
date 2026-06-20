@@ -231,7 +231,10 @@ async function boot() {
     if (!url) return;
     const el = document.getElementById("profPhoto");
     el.classList.remove("mono"); el.classList.add("has-photo");
-    el.style.backgroundImage = `url(${url})`; el.textContent = "";
+    el.style.backgroundImage = `url(${url})`;
+    el.style.backgroundSize = "cover";
+    el.style.backgroundPosition = "center";
+    el.textContent = "";
   });
 
   // wiki extract -> append to bio
