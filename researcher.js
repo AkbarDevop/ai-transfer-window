@@ -27,7 +27,10 @@ const ORG_DOMAIN = {
   "university of cambridge": "cam.ac.uk", "university of sydney": "sydney.edu.au",
   "university of toronto": "utoronto.ca", "australian national university": "anu.edu.au",
   "usc information sciences institute": "isi.edu", "university of freiburg": "uni-freiburg.de",
-  "character.ai": "character.ai", "character ai": "character.ai", "perplexity": "perplexity.ai"
+  "character.ai": "character.ai", "character ai": "character.ai", "perplexity": "perplexity.ai",
+  "uc berkeley": "berkeley.edu", "rwth aachen university": "rwth-aachen.de", "ist austria": "ista.ac.at",
+  "peking university": "pku.edu.cn", "scale ai": "scale.com", "github": "github.com",
+  "apple": "apple.com", "y combinator": "ycombinator.com", "google": "google.com", "vanderbilt university": "vanderbilt.edu"
 };
 const faviconUrl = d => `https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=64`;
 

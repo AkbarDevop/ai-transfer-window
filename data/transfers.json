@@ -142,6 +142,199 @@
       "sources": [
         "https://www.yahoo.com/news/openai-deepmind-losing-engineers-anthropic-110721776.html"
       ]
+    },
+    {
+      "name": "Ilya Sutskever",
+      "from": "openai",
+      "to": "ssi",
+      "date": "2024-06-19",
+      "role": "Leadership",
+      "title": "OpenAI co-founder & ex-chief scientist",
+      "note": "Left OpenAI in May 2024 and co-founded Safe Superintelligence in June 2024; later its CEO.",
+      "fee": null,
+      "rumored": false,
+      "wiki": "Ilya Sutskever",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ilya_Sutskever"
+      ],
+      "id": "ilya-sutskever-openai-ssi-2024-06"
+    },
+    {
+      "name": "Mira Murati",
+      "from": "openai",
+      "to": "tml",
+      "date": "2025-02-18",
+      "role": "Leadership",
+      "title": "Former OpenAI CTO",
+      "note": "Departed OpenAI as CTO in Sept 2024 and founded Thinking Machines Lab in Feb 2025.",
+      "fee": null,
+      "rumored": false,
+      "wiki": "Mira Murati",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mira_Murati"
+      ],
+      "id": "mira-murati-openai-tml-2025-02"
+    },
+    {
+      "name": "John Schulman",
+      "from": "openai",
+      "to": "anthropic",
+      "date": "2024-08-05",
+      "role": "Research",
+      "title": "OpenAI co-founder, PPO/RLHF",
+      "note": "Left OpenAI for Anthropic in Aug 2024 to focus on alignment.",
+      "fee": null,
+      "rumored": false,
+      "wiki": "John Schulman",
+      "sources": [
+        "https://en.wikipedia.org/wiki/John_Schulman"
+      ],
+      "id": "john-schulman-openai-anthropic-2024-08"
+    },
+    {
+      "name": "John Schulman",
+      "from": "anthropic",
+      "to": "tml",
+      "date": "2025-02-18",
+      "role": "Research",
+      "title": "OpenAI co-founder, PPO/RLHF",
+      "note": "Left Anthropic after ~6 months to become chief scientist at Thinking Machines Lab.",
+      "fee": null,
+      "rumored": false,
+      "wiki": "John Schulman",
+      "sources": [
+        "https://en.wikipedia.org/wiki/John_Schulman"
+      ],
+      "id": "john-schulman-anthropic-tml-2025-02"
+    },
+    {
+      "name": "Tim Brooks",
+      "from": "openai",
+      "to": "deepmind",
+      "date": "2024-10-04",
+      "role": "Research",
+      "title": "Sora co-creator",
+      "note": "Sora co-creator left OpenAI for world models & multimodal generation in Gemini.",
+      "fee": null,
+      "rumored": false,
+      "gh": "timothybrooks",
+      "x": "_tim_brooks",
+      "sources": [
+        "https://the-decoder.com/google-deepmind-hires-key-openai-sora-researcher-for-world-simulator-project/"
+      ],
+      "id": "tim-brooks-openai-deepmind-2024-10"
+    },
+    {
+      "name": "Noam Shazeer",
+      "from": "characterai",
+      "to": "deepmind",
+      "date": "2024-08-02",
+      "role": "Leadership",
+      "title": "Transformer co-author",
+      "note": "Google licensed Character.AI tech (~$2.7B) and Shazeer rejoined Google to co-lead Gemini.",
+      "fee": "~$2.7B (CharacterAI deal)",
+      "rumored": false,
+      "wiki": "Noam Shazeer",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Noam_Shazeer"
+      ],
+      "id": "noam-shazeer-characterai-deepmind-2024-08"
+    },
+    {
+      "name": "Lucas Beyer",
+      "from": "deepmind",
+      "to": "openai",
+      "date": "2024-12-04",
+      "role": "Research",
+      "title": "ViT / SigLIP co-creator",
+      "note": "Left DeepMind Zurich to co-found OpenAI's Zurich office with Kolesnikov and Zhai.",
+      "fee": null,
+      "rumored": false,
+      "gh": "lucasb-eyer",
+      "x": "giffmana",
+      "sources": [
+        "https://the-decoder.com/openai-hires-three-google-deepmind-researchers-for-multimodal-ai-work/"
+      ],
+      "id": "lucas-beyer-deepmind-openai-2024-12"
+    },
+    {
+      "name": "Alexander Kolesnikov",
+      "from": "deepmind",
+      "to": "openai",
+      "date": "2024-12-04",
+      "role": "Research",
+      "title": "ViT / BiT / SigLIP",
+      "note": "Left DeepMind Zurich to co-found OpenAI's Zurich office.",
+      "fee": null,
+      "rumored": false,
+      "gh": "akolesnikoff",
+      "sources": [
+        "https://the-decoder.com/openai-hires-three-google-deepmind-researchers-for-multimodal-ai-work/"
+      ],
+      "id": "alexander-kolesnikov-deepmind-openai-2024-12"
+    },
+    {
+      "name": "Xiaohua Zhai",
+      "from": "deepmind",
+      "to": "openai",
+      "date": "2024-12-04",
+      "role": "Research",
+      "title": "SigLIP / PaliGemma lead",
+      "note": "Left DeepMind Zurich to co-found OpenAI's Zurich office.",
+      "fee": null,
+      "rumored": false,
+      "sources": [
+        "https://the-decoder.com/openai-hires-three-google-deepmind-researchers-for-multimodal-ai-work/"
+      ],
+      "id": "xiaohua-zhai-deepmind-openai-2024-12"
+    },
+    {
+      "name": "Alexandr Wang",
+      "from": "scaleai",
+      "to": "meta",
+      "date": "2025-06-12",
+      "role": "Leadership",
+      "title": "Scale AI co-founder",
+      "note": "Became Meta's Chief AI Officer leading Meta Superintelligence Labs; Meta took a ~49% stake in Scale AI.",
+      "fee": null,
+      "rumored": false,
+      "wiki": "Alexandr Wang",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Alexandr_Wang"
+      ],
+      "id": "alexandr-wang-scaleai-meta-2025-06"
+    },
+    {
+      "name": "Nat Friedman",
+      "from": "nfdg",
+      "to": "meta",
+      "date": "2025-06-30",
+      "role": "Leadership",
+      "title": "Former GitHub CEO",
+      "note": "Joined Meta to co-lead Meta Superintelligence Labs on AI products and applied research.",
+      "fee": null,
+      "rumored": false,
+      "wiki": "Nat Friedman",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Nat_Friedman"
+      ],
+      "id": "nat-friedman-nfdg-meta-2025-06"
+    },
+    {
+      "name": "Daniel Gross",
+      "from": "ssi",
+      "to": "meta",
+      "date": "2025-07-01",
+      "role": "Leadership",
+      "title": "SSI co-founder, ex-Apple AI",
+      "note": "Left Safe Superintelligence to join Meta Superintelligence Labs as Friedman's product counterpart.",
+      "fee": null,
+      "rumored": false,
+      "wiki": "Daniel Gross (entrepreneur)",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Daniel_Gross_(entrepreneur)"
+      ],
+      "id": "daniel-gross-ssi-meta-2025-07"
     }
   ]
 }

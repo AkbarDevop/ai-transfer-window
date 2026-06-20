@@ -8,8 +8,27 @@
     "role": "Research",
     "knownFor": "AlphaFold",
     "bio": "John Michael Jumper is an American computational chemist who led the development of AlphaFold, the AI system that predicts protein 3D structures from amino-acid sequences. He shared the 2024 Nobel Prize in Chemistry with Demis Hassabis and was a director at Google DeepMind. He is a Fellow of the Royal Society (2025) and a Breakthrough Prize laureate (2023).",
-    "careerPath": [{"org": "University of Chicago", "years": "2012–2017"}, {"org": "Google DeepMind", "years": "2017–2026"}, {"org": "Anthropic", "years": "2026–"}],
-    "links": {"wikipedia": "John M. Jumper", "github": null, "x": null, "site": null, "scholar": "https://scholar.google.com/citations?user=a5goOh8AAAAJ"}
+    "careerPath": [
+      {
+        "org": "University of Chicago",
+        "years": "2012–2017"
+      },
+      {
+        "org": "Google DeepMind",
+        "years": "2017–2026"
+      },
+      {
+        "org": "Anthropic",
+        "years": "2026–"
+      }
+    ],
+    "links": {
+      "wikipedia": "John M. Jumper",
+      "github": null,
+      "x": null,
+      "site": null,
+      "scholar": "https://scholar.google.com/citations?user=a5goOh8AAAAJ"
+    }
   },
   "andrej-karpathy": {
     "name": "Andrej Karpathy",
@@ -19,8 +38,39 @@
     "role": "Research",
     "knownFor": "CS231n · Tesla Autopilot · founding OpenAI",
     "bio": "Andrej Karpathy is a Slovak-Canadian AI researcher known for deep learning and computer vision. A founding member of OpenAI, he later served as Director of AI at Tesla (2017–2022) leading the Autopilot vision team, created Stanford's influential CS231n course, and founded the AI education startup Eureka Labs in 2024. He is widely followed for his educational content on neural networks.",
-    "careerPath": [{"org": "Stanford University", "years": "2011–2015"}, {"org": "OpenAI", "years": "2015–2017"}, {"org": "Tesla", "years": "2017–2022"}, {"org": "OpenAI", "years": "2023–2024"}, {"org": "Eureka Labs", "years": "2024–2026"}, {"org": "Anthropic", "years": "2026–"}],
-    "links": {"wikipedia": "Andrej Karpathy", "github": "karpathy", "x": "karpathy", "site": "https://karpathy.ai/", "scholar": "https://scholar.google.com/citations?user=l8WuQJgAAAAJ"}
+    "careerPath": [
+      {
+        "org": "Stanford University",
+        "years": "2011–2015"
+      },
+      {
+        "org": "OpenAI",
+        "years": "2015–2017"
+      },
+      {
+        "org": "Tesla",
+        "years": "2017–2022"
+      },
+      {
+        "org": "OpenAI",
+        "years": "2023–2024"
+      },
+      {
+        "org": "Eureka Labs",
+        "years": "2024–2026"
+      },
+      {
+        "org": "Anthropic",
+        "years": "2026–"
+      }
+    ],
+    "links": {
+      "wikipedia": "Andrej Karpathy",
+      "github": "karpathy",
+      "x": "karpathy",
+      "site": "https://karpathy.ai/",
+      "scholar": "https://scholar.google.com/citations?user=l8WuQJgAAAAJ"
+    }
   },
   "jan-leike": {
     "name": "Jan Leike",
@@ -30,8 +80,27 @@
     "role": "AI Safety",
     "knownFor": "Superalignment",
     "bio": "Jan Leike is a German AI-safety researcher focused on aligning advanced AI systems. He co-led OpenAI's Superalignment team with Ilya Sutskever and contributed to RLHF, InstructGPT, ChatGPT and GPT-4 alignment before resigning in May 2024 over safety concerns. He then joined Anthropic, where he leads the Alignment Science team.",
-    "careerPath": [{"org": "DeepMind", "years": ""}, {"org": "OpenAI", "years": "2021–2024"}, {"org": "Anthropic", "years": "2024–"}],
-    "links": {"wikipedia": "Jan Leike", "github": null, "x": "janleike", "site": "https://jan.leike.name/", "scholar": "https://scholar.google.com/citations?user=beiWcokAAAAJ"}
+    "careerPath": [
+      {
+        "org": "DeepMind",
+        "years": ""
+      },
+      {
+        "org": "OpenAI",
+        "years": "2021–2024"
+      },
+      {
+        "org": "Anthropic",
+        "years": "2024–"
+      }
+    ],
+    "links": {
+      "wikipedia": "Jan Leike",
+      "github": null,
+      "x": "janleike",
+      "site": "https://jan.leike.name/",
+      "scholar": "https://scholar.google.com/citations?user=beiWcokAAAAJ"
+    }
   },
   "andrew-tulloch": {
     "name": "Andrew Tulloch",
@@ -41,8 +110,31 @@
     "role": "Research",
     "knownFor": "PyTorch · ML systems",
     "bio": "Andrew Tulloch is a machine-learning researcher and engineer who grew up in Perth, Australia and studied mathematics at Sydney and Cambridge. He worked on ML systems at Facebook/Meta (including PyTorch), then at OpenAI where he contributed to GPT-4o, GPT-4.5 and o3, and co-founded Thinking Machines Lab. In 2025 he joined Meta's superintelligence effort.",
-    "careerPath": [{"org": "Meta (Facebook)", "years": ""}, {"org": "OpenAI", "years": ""}, {"org": "Thinking Machines Lab", "years": "2025"}, {"org": "Meta", "years": "2025–"}],
-    "links": {"wikipedia": null, "github": "ajtulloch", "x": null, "site": "https://tullo.ch", "scholar": "https://scholar.google.com/citations?user=duSEbnYAAAAJ"}
+    "careerPath": [
+      {
+        "org": "Meta (Facebook)",
+        "years": ""
+      },
+      {
+        "org": "OpenAI",
+        "years": ""
+      },
+      {
+        "org": "Thinking Machines Lab",
+        "years": "2025"
+      },
+      {
+        "org": "Meta",
+        "years": "2025–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": "ajtulloch",
+      "x": null,
+      "site": "https://tullo.ch",
+      "scholar": "https://scholar.google.com/citations?user=duSEbnYAAAAJ"
+    }
   },
   "barret-zoph": {
     "name": "Barret Zoph",
@@ -52,8 +144,31 @@
     "role": "Research",
     "knownFor": "Neural architecture search",
     "bio": "Barret Zoph pioneered Neural Architecture Search (NAS) and AutoML, plus data-augmentation methods (AutoAugment, RandAugment, SpecAugment) and sparse mixture-of-experts models at Google Brain. He became VP of Research (Post-Training) at OpenAI, leading alignment, tool use, evaluations and ChatGPT, then co-founded Thinking Machines Lab as CTO alongside Mira Murati. He returned to OpenAI in January 2026.",
-    "careerPath": [{"org": "Google Brain", "years": ""}, {"org": "OpenAI", "years": ""}, {"org": "Thinking Machines Lab", "years": "2024–2026"}, {"org": "OpenAI", "years": "2026–"}],
-    "links": {"wikipedia": null, "github": null, "x": "barret_zoph", "site": "https://barretzoph.github.io", "scholar": "https://scholar.google.com/citations?user=H-BnRI0AAAAJ"}
+    "careerPath": [
+      {
+        "org": "Google Brain",
+        "years": ""
+      },
+      {
+        "org": "OpenAI",
+        "years": ""
+      },
+      {
+        "org": "Thinking Machines Lab",
+        "years": "2024–2026"
+      },
+      {
+        "org": "OpenAI",
+        "years": "2026–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": null,
+      "x": "barret_zoph",
+      "site": "https://barretzoph.github.io",
+      "scholar": "https://scholar.google.com/citations?user=H-BnRI0AAAAJ"
+    }
   },
   "luke-metz": {
     "name": "Luke Metz",
@@ -63,8 +178,31 @@
     "role": "Research",
     "knownFor": "Learned optimizers · meta-learning",
     "bio": "Luke Metz is an AI researcher working at the intersection of research and product. He was a research scientist at Google Brain and then OpenAI, where he was part of the team behind the original ChatGPT, before joining Thinking Machines Lab. He returned to OpenAI in January 2026.",
-    "careerPath": [{"org": "Google Brain", "years": ""}, {"org": "OpenAI", "years": ""}, {"org": "Thinking Machines Lab", "years": "2025"}, {"org": "OpenAI", "years": "2026–"}],
-    "links": {"wikipedia": null, "github": "lukemetz", "x": "Luke_Metz", "site": "https://lukemetz.com", "scholar": null}
+    "careerPath": [
+      {
+        "org": "Google Brain",
+        "years": ""
+      },
+      {
+        "org": "OpenAI",
+        "years": ""
+      },
+      {
+        "org": "Thinking Machines Lab",
+        "years": "2025"
+      },
+      {
+        "org": "OpenAI",
+        "years": "2026–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": "lukemetz",
+      "x": "Luke_Metz",
+      "site": "https://lukemetz.com",
+      "scholar": null
+    }
   },
   "sam-schoenholz": {
     "name": "Sam Schoenholz",
@@ -74,8 +212,35 @@
     "role": "Research",
     "knownFor": "neural-tangents · JAX",
     "bio": "Samuel S. Schoenholz is a machine-learning researcher working at the intersection of deep learning and statistical physics, with a PhD in Physics from the University of Pennsylvania under Andrea Liu. As a senior research scientist at Google Brain he co-developed the neural-tangents library and worked on neural-network theory. After OpenAI and Thinking Machines Lab, he returned to OpenAI in January 2026 alongside Barret Zoph and Luke Metz.",
-    "careerPath": [{"org": "University of Pennsylvania", "years": "2010–2015"}, {"org": "Google Brain", "years": ""}, {"org": "OpenAI", "years": ""}, {"org": "Thinking Machines Lab", "years": "2025–2026"}, {"org": "OpenAI", "years": "2026–"}],
-    "links": {"wikipedia": null, "github": null, "x": null, "site": null, "scholar": "https://scholar.google.com/citations?user=mk-zQBsAAAAJ"}
+    "careerPath": [
+      {
+        "org": "University of Pennsylvania",
+        "years": "2010–2015"
+      },
+      {
+        "org": "Google Brain",
+        "years": ""
+      },
+      {
+        "org": "OpenAI",
+        "years": ""
+      },
+      {
+        "org": "Thinking Machines Lab",
+        "years": "2025–2026"
+      },
+      {
+        "org": "OpenAI",
+        "years": "2026–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": null,
+      "x": "sschoenholz",
+      "site": null,
+      "scholar": "https://scholar.google.com/citations?user=mk-zQBsAAAAJ"
+    }
   },
   "devendra-chaplot": {
     "name": "Devendra Chaplot",
@@ -85,8 +250,39 @@
     "role": "Research",
     "knownFor": "Embodied AI · navigation",
     "bio": "Devendra Singh Chaplot specializes in computer vision, robotics and embodied AI, known for autonomous navigation agents, semantic exploration and neural SLAM. After a PhD at Carnegie Mellon and time at Facebook AI Research, he joined Mistral AI as a founding-team member leading multimodal research. He was a founding member at Thinking Machines Lab from 2025, and in 2026 moved to xAI.",
-    "careerPath": [{"org": "IIT Bombay", "years": "2010–2014"}, {"org": "Carnegie Mellon University", "years": "2015–2021"}, {"org": "Facebook AI Research", "years": "2021–2023"}, {"org": "Mistral AI", "years": "2023–2025"}, {"org": "Thinking Machines Lab", "years": "2025–2026"}, {"org": "xAI", "years": "2026–"}],
-    "links": {"wikipedia": null, "github": "devendrachaplot", "x": "dchaplot", "site": "https://devendrachaplot.github.io", "scholar": "https://scholar.google.com/citations?user=1MSpdmQAAAAJ"}
+    "careerPath": [
+      {
+        "org": "IIT Bombay",
+        "years": "2010–2014"
+      },
+      {
+        "org": "Carnegie Mellon University",
+        "years": "2015–2021"
+      },
+      {
+        "org": "Facebook AI Research",
+        "years": "2021–2023"
+      },
+      {
+        "org": "Mistral AI",
+        "years": "2023–2025"
+      },
+      {
+        "org": "Thinking Machines Lab",
+        "years": "2025–2026"
+      },
+      {
+        "org": "xAI",
+        "years": "2026–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": "devendrachaplot",
+      "x": "dchaplot",
+      "site": "https://devendrachaplot.github.io",
+      "scholar": "https://scholar.google.com/citations?user=1MSpdmQAAAAJ"
+    }
   },
   "ross-nordeen": {
     "name": "Ross Nordeen",
@@ -96,7 +292,368 @@
     "role": "Engineering",
     "knownFor": "AI compute infrastructure",
     "bio": "Ross Nordeen is an infrastructure engineer and operations leader known for compute and data-center strategy at frontier AI labs. He spent roughly four years at Tesla as a technical program manager on supercomputing before becoming one of xAI's founding members in 2023, leading data-center planning. He departed xAI in early 2026 and joined Anthropic to lead compute expansion.",
-    "careerPath": [{"org": "Tesla", "years": ""}, {"org": "xAI", "years": "2023–2026"}, {"org": "Anthropic", "years": "2026–"}],
-    "links": {"wikipedia": null, "github": null, "x": null, "site": null, "scholar": null}
+    "careerPath": [
+      {
+        "org": "Tesla",
+        "years": ""
+      },
+      {
+        "org": "xAI",
+        "years": "2023–2026"
+      },
+      {
+        "org": "Anthropic",
+        "years": "2026–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": null,
+      "x": "rpoo",
+      "site": null,
+      "scholar": null
+    }
+  },
+  "ilya-sutskever": {
+    "name": "Ilya Sutskever",
+    "nationality": "Israel / Canada",
+    "bornYear": 1986,
+    "education": "BSc, MSc, PhD Computer Science, University of Toronto (advisor: Geoffrey Hinton)",
+    "role": "Leadership",
+    "knownFor": "AlexNet · OpenAI co-founder",
+    "bio": "Ilya Sutskever co-created AlexNet, co-founded OpenAI and served as its chief scientist overseeing GPT and ChatGPT. He left in May 2024 and co-founded Safe Superintelligence (SSI), becoming CEO after Daniel Gross departed for Meta.",
+    "careerPath": [
+      {
+        "org": "University of Toronto",
+        "years": ""
+      },
+      {
+        "org": "Google Brain",
+        "years": ""
+      },
+      {
+        "org": "OpenAI",
+        "years": "2015–2024"
+      },
+      {
+        "org": "Safe Superintelligence",
+        "years": "2024–"
+      }
+    ],
+    "links": {
+      "wikipedia": "Ilya Sutskever",
+      "github": null,
+      "x": "ilyasut",
+      "site": null,
+      "scholar": "https://scholar.google.com/citations?user=x04W_mMAAAAJ"
+    }
+  },
+  "mira-murati": {
+    "name": "Mira Murati",
+    "nationality": "Albania / United States",
+    "bornYear": 1988,
+    "education": "BA, Colby College; BE, Dartmouth College",
+    "role": "Leadership",
+    "knownFor": "Former OpenAI CTO",
+    "bio": "Mira Murati was OpenAI's CTO, leading ChatGPT, DALL-E, Codex and Sora, and briefly interim CEO in 2023. She left in September 2024 and founded Thinking Machines Lab in February 2025 as CEO.",
+    "careerPath": [
+      {
+        "org": "Tesla",
+        "years": ""
+      },
+      {
+        "org": "OpenAI",
+        "years": "2018–2024"
+      },
+      {
+        "org": "Thinking Machines Lab",
+        "years": "2025–"
+      }
+    ],
+    "links": {
+      "wikipedia": "Mira Murati",
+      "github": null,
+      "x": "miramurati",
+      "site": null,
+      "scholar": null
+    }
+  },
+  "john-schulman": {
+    "name": "John Schulman",
+    "nationality": "United States",
+    "bornYear": 1988,
+    "education": "BS Physics, Caltech; PhD EECS, UC Berkeley (advisor: Pieter Abbeel)",
+    "role": "Research",
+    "knownFor": "PPO · RLHF · ChatGPT",
+    "bio": "John Schulman co-founded OpenAI in 2015, led the RL team behind ChatGPT and invented the PPO algorithm. He left for Anthropic in August 2024, then joined Thinking Machines Lab as chief scientist in early 2025.",
+    "careerPath": [
+      {
+        "org": "UC Berkeley",
+        "years": ""
+      },
+      {
+        "org": "OpenAI",
+        "years": "2015–2024"
+      },
+      {
+        "org": "Anthropic",
+        "years": "2024"
+      },
+      {
+        "org": "Thinking Machines Lab",
+        "years": "2025–"
+      }
+    ],
+    "links": {
+      "wikipedia": "John Schulman",
+      "github": null,
+      "x": "johnschulman2",
+      "site": null,
+      "scholar": "https://scholar.google.com/citations?user=itSa94cAAAAJ"
+    }
+  },
+  "tim-brooks": {
+    "name": "Tim Brooks",
+    "nationality": null,
+    "bornYear": null,
+    "education": "PhD, UC Berkeley (advisor: Alexei Efros)",
+    "role": "Research",
+    "knownFor": "Sora · InstructPix2Pix",
+    "bio": "Tim Brooks co-created OpenAI's Sora text-to-video model and invented InstructPix2Pix during his PhD at UC Berkeley. He left OpenAI for Google DeepMind in October 2024 to work on world models and multimodal generation in Gemini.",
+    "careerPath": [
+      {
+        "org": "UC Berkeley",
+        "years": ""
+      },
+      {
+        "org": "OpenAI",
+        "years": "2022–2024"
+      },
+      {
+        "org": "Google DeepMind",
+        "years": "2024–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": "timothybrooks",
+      "x": "_tim_brooks",
+      "site": null,
+      "scholar": null
+    }
+  },
+  "noam-shazeer": {
+    "name": "Noam Shazeer",
+    "nationality": "United States",
+    "bornYear": 1976,
+    "education": "BS, Duke University",
+    "role": "Leadership",
+    "knownFor": "Transformer · Character.AI",
+    "bio": "Noam Shazeer is a lead author of 'Attention Is All You Need', which introduced the Transformer. He co-founded Character.AI in 2021, and in 2024 Google licensed its technology (~$2.7B) and Shazeer rejoined Google to co-lead Gemini.",
+    "careerPath": [
+      {
+        "org": "Google",
+        "years": "2000–2021"
+      },
+      {
+        "org": "Character.AI",
+        "years": "2021–2024"
+      },
+      {
+        "org": "Google",
+        "years": "2024–"
+      }
+    ],
+    "links": {
+      "wikipedia": "Noam Shazeer",
+      "github": null,
+      "x": null,
+      "site": null,
+      "scholar": null
+    }
+  },
+  "lucas-beyer": {
+    "name": "Lucas Beyer",
+    "nationality": "Belgium",
+    "bornYear": null,
+    "education": "PhD, RWTH Aachen University",
+    "role": "Research",
+    "knownFor": "Vision Transformer · SigLIP",
+    "bio": "Lucas Beyer co-created the Vision Transformer, SigLIP, PaliGemma and the big_vision library at Google Brain/DeepMind in Zurich. In December 2024 he co-founded OpenAI's Zurich office with Xiaohua Zhai and Alexander Kolesnikov.",
+    "careerPath": [
+      {
+        "org": "RWTH Aachen University",
+        "years": ""
+      },
+      {
+        "org": "Google DeepMind",
+        "years": "2018–2024"
+      },
+      {
+        "org": "OpenAI",
+        "years": "2024–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": "lucasb-eyer",
+      "x": "giffmana",
+      "site": "https://lucasb.eyer.be/",
+      "scholar": "https://scholar.google.com/citations?user=p2gwhK4AAAAJ"
+    }
+  },
+  "alexander-kolesnikov": {
+    "name": "Alexander Kolesnikov",
+    "nationality": null,
+    "bornYear": null,
+    "education": "PhD, IST Austria (advisor: Christoph Lampert)",
+    "role": "Research",
+    "knownFor": "ViT · BiT · SigLIP",
+    "bio": "Alexander Kolesnikov co-authored the Vision Transformer, Big Transfer (BiT) and SigLIP and maintained big_vision. He was a senior staff research scientist at Google DeepMind Zurich before co-founding OpenAI's Zurich office in December 2024.",
+    "careerPath": [
+      {
+        "org": "IST Austria",
+        "years": ""
+      },
+      {
+        "org": "Google DeepMind",
+        "years": ""
+      },
+      {
+        "org": "OpenAI",
+        "years": "2024–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": "akolesnikoff",
+      "x": null,
+      "site": null,
+      "scholar": null
+    }
+  },
+  "xiaohua-zhai": {
+    "name": "Xiaohua Zhai",
+    "nationality": "China",
+    "bornYear": null,
+    "education": "PhD, Peking University (2014)",
+    "role": "Research",
+    "knownFor": "SigLIP · PaliGemma · ViT",
+    "bio": "Xiaohua Zhai is a multimodal-AI researcher who led work on SigLIP, PaliGemma, ViT and the WebLI dataset as a tech lead at Google DeepMind Zurich. He co-founded OpenAI's Zurich office in December 2024.",
+    "careerPath": [
+      {
+        "org": "Peking University",
+        "years": ""
+      },
+      {
+        "org": "Google DeepMind",
+        "years": ""
+      },
+      {
+        "org": "OpenAI",
+        "years": "2024–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": null,
+      "x": null,
+      "site": null,
+      "scholar": null
+    }
+  },
+  "alexandr-wang": {
+    "name": "Alexandr Wang",
+    "nationality": "United States",
+    "bornYear": 1997,
+    "education": "MIT (dropped out)",
+    "role": "Leadership",
+    "knownFor": "Scale AI co-founder",
+    "bio": "Alexandr Wang co-founded data-labeling company Scale AI in 2016 after dropping out of MIT, becoming the world's youngest self-made billionaire. In June 2025 Meta took a ~49% stake in Scale AI and Wang moved to Meta as Chief AI Officer to lead Meta Superintelligence Labs.",
+    "careerPath": [
+      {
+        "org": "Scale AI",
+        "years": "2016–2025"
+      },
+      {
+        "org": "Meta",
+        "years": "2025–"
+      }
+    ],
+    "links": {
+      "wikipedia": "Alexandr Wang",
+      "github": null,
+      "x": "alexandr_wang",
+      "site": null,
+      "scholar": null
+    }
+  },
+  "nat-friedman": {
+    "name": "Nat Friedman",
+    "nationality": "United States",
+    "bornYear": 1977,
+    "education": "BS Computer Science & Mathematics, MIT",
+    "role": "Leadership",
+    "knownFor": "Former GitHub CEO · Copilot",
+    "bio": "Nat Friedman was CEO of GitHub (2018–2021), where he launched Copilot and Codespaces, then ran the NFDG investment partnership with Daniel Gross. In June 2025 he joined Meta to co-lead Meta Superintelligence Labs.",
+    "careerPath": [
+      {
+        "org": "GitHub",
+        "years": "2018–2021"
+      },
+      {
+        "org": "NFDG",
+        "years": "2021–2025"
+      },
+      {
+        "org": "Meta",
+        "years": "2025–"
+      }
+    ],
+    "links": {
+      "wikipedia": "Nat Friedman",
+      "github": "nat",
+      "x": "natfriedman",
+      "site": "https://nat.org/",
+      "scholar": null
+    }
+  },
+  "daniel-gross": {
+    "name": "Daniel Gross",
+    "nationality": "Israel",
+    "bornYear": null,
+    "education": null,
+    "role": "Leadership",
+    "knownFor": "SSI co-founder · ex-Apple AI",
+    "bio": "Daniel Gross sold his startup Cue to Apple and led AI efforts there, then became a YC partner and AI investor via NFDG. In 2024 he co-founded Safe Superintelligence with Ilya Sutskever, and in July 2025 left to join Meta Superintelligence Labs.",
+    "careerPath": [
+      {
+        "org": "Apple",
+        "years": ""
+      },
+      {
+        "org": "Y Combinator",
+        "years": ""
+      },
+      {
+        "org": "NFDG",
+        "years": ""
+      },
+      {
+        "org": "Safe Superintelligence",
+        "years": "2024–2025"
+      },
+      {
+        "org": "Meta",
+        "years": "2025–"
+      }
+    ],
+    "links": {
+      "wikipedia": "Daniel Gross (entrepreneur)",
+      "github": "danielgross",
+      "x": "danielgross",
+      "site": null,
+      "scholar": null
+    }
   }
 }
