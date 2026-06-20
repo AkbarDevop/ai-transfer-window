@@ -116,12 +116,18 @@ function renderFeed() {
 
 async function boot() {
   try {
-    const [labs, transfers] = await Promise.all([
+    const [labs, seed, dynamic] = await Promise.all([
       fetch("data/labs.json").then(r => r.json()),
-      fetch("data/transfers.json").then(r => r.json())
+      fetch("data/transfers.json").then(r => r.json()),
+      // Live additions from the Netlify Blobs store. Falls back to [] if offline / not deployed.
+      fetch("/api/transfers").then(r => (r.ok ? r.json() : [])).catch(() => [])
     ]);
     LABS = labs;
-    TRANSFERS = transfers.transfers || transfers;
+    const seedList = seed.transfers || seed;
+    // Merge seed + dynamic; dynamic entries upsert by id so you can correct a move.
+    const byId = new Map();
+    [...seedList, ...(Array.isArray(dynamic) ? dynamic : [])].forEach(t => byId.set(t.id, t));
+    TRANSFERS = [...byId.values()];
     renderStandings();
     renderFilters();
     renderFeed();
