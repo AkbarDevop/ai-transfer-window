@@ -4,6 +4,7 @@
     {
       "id": "jumper-gdm-ant-2026-06",
       "name": "John Jumper",
+      "wiki": "John M. Jumper",
       "title": "Nobel laureate, AlphaFold co-creator",
       "from": "deepmind",
       "to": "anthropic",
@@ -20,6 +21,7 @@
     {
       "id": "karpathy-oai-ant-2026-05",
       "name": "Andrej Karpathy",
+      "wiki": "Andrej Karpathy",
       "title": "Founding OpenAI member, ex-Tesla AI",
       "from": "openai",
       "to": "anthropic",

@@ -3,82 +3,139 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Transfer Window — frontier-lab researcher transfers</title>
-  <meta name="description" content="The transfer market for AI researchers. Every named move between OpenAI, Anthropic, Google DeepMind, Meta, xAI and the rest, table-style like Transfermarkt." />
+  <title>AI Transfer Window — researcher transfers, rumours & news</title>
+  <meta name="description" content="The Transfermarkt for AI researchers. Live transfers, rumours, transfer balance and news across OpenAI, Anthropic, Google DeepMind, Meta, xAI and the frontier labs." />
 
   <meta property="og:title" content="AI Transfer Window" />
-  <meta property="og:description" content="The transfer market for AI researchers. Track who's moving between the frontier labs." />
+  <meta property="og:description" content="The transfer market for AI researchers. Transfers, rumours, balances and live news across the frontier labs." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="og.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="AI Transfer Window" />
-  <meta name="twitter:description" content="The transfer market for AI researchers. Track who's moving between the frontier labs." />
+  <meta name="twitter:description" content="The transfer market for AI researchers." />
   <meta name="twitter:image" content="og.png" />
 
   <link rel="icon" href="favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- top bar -->
   <header class="nav">
     <div class="nav-inner">
       <a class="brand" href="/">
         <span class="brand-mark">⚡</span>
         <span class="brand-name">AI Transfer<span class="brand-accent">Window</span></span>
       </a>
-      <nav class="nav-links">
-        <a href="#transfers">Transfers</a>
-        <a href="#balance">Balance</a>
-        <a id="navX" href="#" target="_blank" rel="noopener" class="nav-x">Follow on X</a>
-      </nav>
+      <div class="search">
+        <input id="search" type="search" placeholder="Search researchers or labs…" autocomplete="off" />
+        <span class="search-ic">⌕</span>
+      </div>
+      <a id="navX" href="#" target="_blank" rel="noopener" class="nav-x">Follow on X</a>
     </div>
   </header>
 
-  <div class="subbar">
-    <div class="subbar-inner">
-      <div class="crumbs"><span>AI Researchers</span> <span class="sep">›</span> <strong>Transfers</strong> <span class="sep">›</span> <span>2026</span></div>
-      <div class="window-state">Window <span class="open-dot"></span> <strong>OPEN</strong></div>
+  <!-- secondary nav -->
+  <nav class="subnav">
+    <div class="subnav-inner">
+      <a href="#spotlight" class="active">Home</a>
+      <a href="#news">News</a>
+      <a href="#transfers">Transfers</a>
+      <a href="#rumours">Rumours</a>
+      <a href="#balance">Tables</a>
+      <span class="subnav-right">Window <span class="open-dot"></span> <strong>OPEN</strong></span>
     </div>
-  </div>
+  </nav>
 
   <main class="wrap">
-    <div class="layout">
-      <!-- main column -->
-      <section class="col-main">
-        <div class="panel" id="transfers">
-          <div class="panel-head">
-            <h2>Latest transfers</h2>
-            <div class="filters" id="filters"></div>
-          </div>
-          <div class="table-scroll">
-            <table class="tm-table" id="transferTable"></table>
-          </div>
-          <div class="panel-foot" id="count"></div>
-        </div>
-      </section>
+    <!-- SPOTLIGHT -->
+    <section class="section" id="spotlight">
+      <div class="sec-head"><h2>Spotlight</h2></div>
+      <div class="spotlight-grid" id="spotlightGrid"></div>
+    </section>
 
-      <!-- sidebar -->
-      <aside class="col-side">
-        <div class="panel" id="balance">
-          <div class="panel-head"><h2>Transfer balance</h2></div>
-          <table class="tm-table standings" id="standings"></table>
-          <div class="panel-foot subtle">Net = signings in minus departures out.</div>
-        </div>
+    <!-- NEWS TICKER -->
+    <section class="section" id="news">
+      <div class="sec-head"><h2>News ticker</h2><span class="live">● live</span></div>
+      <div class="ticker" id="newsTicker"><div class="loading">Loading AI lab news…</div></div>
+    </section>
 
-        <div class="panel promo">
-          <div class="promo-body">
-            <div class="promo-k">Deadline day never ends.</div>
-            <p>New signings posted the moment they break.</p>
-            <a class="btn-x" id="sideX" href="#" target="_blank" rel="noopener">Follow the window on X →</a>
+    <!-- TRANSFERS 3-COLUMN -->
+    <section class="section" id="transfers">
+      <div class="sec-head"><h2>Transfers</h2></div>
+      <div class="tri">
+        <div class="panel">
+          <div class="panel-head sm"><h3>Last transfers</h3></div>
+          <div id="lastTransfers"></div>
+        </div>
+        <div class="panel" id="rumours">
+          <div class="panel-head sm"><h3>Top rumours</h3></div>
+          <div id="topRumours"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head sm"><h3>Biggest deals</h3></div>
+          <div id="biggestDeals"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FULL TABLE + STANDINGS -->
+    <section class="section">
+      <div class="layout">
+        <div class="col-main">
+          <div class="panel">
+            <div class="panel-head">
+              <h2>All transfers</h2>
+              <div class="filters" id="filters"></div>
+            </div>
+            <div class="table-scroll"><table class="tm-table" id="transferTable"></table></div>
+            <div class="panel-foot" id="count"></div>
           </div>
         </div>
-      </aside>
-    </div>
+        <aside class="col-side">
+          <div class="panel" id="balance">
+            <div class="panel-head"><h2>Transfer balance</h2></div>
+            <table class="tm-table standings" id="standings"></table>
+            <div class="panel-foot subtle">Net = signings in minus departures out.</div>
+          </div>
+          <div class="panel promo">
+            <div class="promo-body">
+              <div class="promo-k">Deadline day never ends.</div>
+              <p>Every signing posted the moment it breaks.</p>
+              <a class="btn-x" id="sideX" href="#" target="_blank" rel="noopener">Follow the window on X →</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
   </main>
 
+  <!-- footer -->
   <footer class="footer">
-    <div class="footer-inner">
-      <span>Curated, not automated. Spotted a move I missed? <a id="footX" href="#" target="_blank" rel="noopener">Tell me on X</a>.</span>
-      <span class="fine">Comp figures are reported / rumored where labeled. Not affiliated with any lab. Crest marks belong to their owners.</span>
+    <div class="footer-cols">
+      <div>
+        <h4>Quick links</h4>
+        <a href="#transfers">Latest transfers</a>
+        <a href="#rumours">Top rumours</a>
+        <a href="#balance">Transfer balance</a>
+        <a href="#news">News ticker</a>
+      </div>
+      <div>
+        <h4>Labs</h4>
+        <a href="#" data-lab="openai">OpenAI</a>
+        <a href="#" data-lab="anthropic">Anthropic</a>
+        <a href="#" data-lab="deepmind">Google DeepMind</a>
+        <a href="#" data-lab="meta">Meta</a>
+        <a href="#" data-lab="xai">xAI</a>
+      </div>
+      <div>
+        <h4>The project</h4>
+        <a href="https://github.com/AkbarDevop/ai-transfer-window" target="_blank" rel="noopener">Source on GitHub</a>
+        <a href="/admin.html">Add a transfer</a>
+        <a id="footX" href="#" target="_blank" rel="noopener">Follow on X</a>
+      </div>
+    </div>
+    <div class="footer-fine">
+      Curated, not automated. Comp figures are reported / rumored where labeled. Researcher photos via Wikipedia (CC BY-SA). News via Hacker News. Crest marks belong to their owners. Not affiliated with any lab.
     </div>
   </footer>
 

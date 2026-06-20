@@ -8,8 +8,13 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# Clean API path -> function
+# Clean API paths -> functions
 [[redirects]]
   from = "/api/transfers"
   to = "/.netlify/functions/transfers"
+  status = 200
+
+[[redirects]]
+  from = "/api/news"
+  to = "/.netlify/functions/news"
   status = 200
