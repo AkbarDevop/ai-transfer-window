@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Researcher profile — AI Transfer Window</title>
+  <meta name="description" content="AI researcher profile: transfer history, career path, details and news." />
+  <link rel="icon" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">⚡</span>
+        <span class="brand-name">AI Transfer<span class="brand-accent">Window</span></span>
+      </a>
+      <div class="search"><input id="search" type="search" placeholder="Search researchers or labs…" autocomplete="off" /><span class="search-ic">⌕</span></div>
+      <a id="navX" href="#" target="_blank" rel="noopener" class="nav-x">Follow on X</a>
+    </div>
+  </header>
+  <nav class="subnav">
+    <div class="subnav-inner">
+      <a href="/">Home</a>
+      <a href="/#news">News</a>
+      <a href="/#transfers">Transfers</a>
+      <a href="/#rumours">Rumours</a>
+      <a href="/#balance">Tables</a>
+      <span class="subnav-right">Window <span class="open-dot"></span> <strong>OPEN</strong></span>
+    </div>
+  </nav>
+
+  <main class="wrap" id="profile">
+    <div class="loading-screen" id="loading">Loading profile…</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-fine">
+      Curated, not automated. Profile details are best-effort and may be incomplete. Photos via Wikipedia (CC BY-SA) / public profiles. News via Hacker News. Not affiliated with any lab.
+    </div>
+  </footer>
+
+  <script src="researcher.js"></script>
+</body>
+</html>

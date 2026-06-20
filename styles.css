@@ -225,6 +225,51 @@ img, .photo { max-width: 100%; }
   .table-scroll { -webkit-overflow-scrolling: touch; }
 }
 
+/* ===== clickable researcher names ===== */
+.plink, a.pname { text-decoration: none; }
+a.pname.plink { color: var(--navy); }
+a.pname.plink:hover, a.mname.plink:hover { color: var(--blue-link); text-decoration: underline; }
+.pavatar { display: inline-flex; }
+.pavatar:hover { filter: brightness(1.05); }
+
+/* ===== profile page ===== */
+.loading-screen { padding: 60px 0; text-align: center; color: var(--muted); }
+.back-link { display: inline-block; margin: 4px 0 14px; color: var(--blue-link); font-weight: 600; font-size: 13.5px; }
+.prof-hero { display: flex; gap: 22px; align-items: center; padding: 22px; }
+.prof-photo { width: 132px; height: 132px; border-radius: 10px; flex: 0 0 auto; background-size: cover; background-position: center top; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 40px; border: 1px solid var(--line); }
+.prof-headline { min-width: 0; flex: 1; }
+.prof-role { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); }
+.prof-headline h1 { margin: 3px 0 8px; font-size: 30px; letter-spacing: -0.02em; color: var(--navy); line-height: 1.05; }
+.prof-current { display: flex; align-items: center; gap: 10px; margin-bottom: 7px; }
+.status-badge { font-size: 11px; font-weight: 800; color: var(--green); }
+.prof-known { font-size: 13.5px; color: var(--muted); margin-bottom: 12px; }
+.prof-known strong { color: var(--text); }
+.prof-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.lk { font-size: 12.5px; font-weight: 700; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--head-border); background: #fff; color: var(--blue-link); }
+.lk:hover { background: var(--head); text-decoration: none; }
+.lk-x { background: var(--accent); color: #1a1300; border-color: var(--accent); }
+
+/* career path timeline */
+.cp { padding: 6px 14px 12px; }
+.cp-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); position: relative; }
+.cp-item:last-child { border-bottom: none; }
+.cp-item .crest-badge { width: 32px; height: 32px; }
+.cp-item .crest-logo { width: 19px; height: 19px; }
+.cp-org { font-weight: 700; color: var(--navy); font-size: 14px; }
+.cp-years { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.cp-item.now .cp-org::after { content: " · now"; color: var(--green); font-weight: 800; }
+
+/* bio */
+.bio { padding: 14px; font-size: 14px; line-height: 1.6; color: var(--text); }
+.bio p { margin: 0 0 12px; }
+.bio .wiki-extract { color: #2c3645; padding-top: 10px; border-top: 1px dashed var(--head-border); }
+
+/* facts table */
+.facts th { text-align: left; color: var(--muted); font-weight: 600; font-size: 12px; width: 42%; vertical-align: top; padding: 9px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.facts td { font-size: 13px; color: var(--text); padding: 9px 10px; border-bottom: 1px solid var(--line); }
+.facts tr:last-child th, .facts tr:last-child td { border-bottom: none; }
+#profNews .tick { padding: 10px 14px; }
+
 @media (max-width: 880px) {
   .layout { grid-template-columns: 1fr; }
   .col-side { order: 2; }
@@ -232,6 +277,11 @@ img, .photo { max-width: 100%; }
   .spot.lead { grid-column: span 2; grid-row: auto; min-height: 260px; }
   .ticker { grid-template-columns: 1fr 1fr; }
   .tri { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .prof-hero { flex-direction: column; text-align: center; align-items: center; }
+  .prof-links { justify-content: center; }
+  .prof-current { justify-content: center; }
 }
 @media (max-width: 560px) {
   body { font-size: 13.5px; }

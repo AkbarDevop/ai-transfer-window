@@ -12,6 +12,8 @@ let activeFilter = "all";
 let searchQuery = "";
 const PHOTOS = {}; // wiki title -> url | null (cache)
 
+const slugify = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+const profileLink = t => `researcher.html?r=${slugify(t.name)}`;
 const initials = n => n.split(/\s+/).map(w => w[0]).slice(0, 2).join("").toUpperCase();
 const fmtDate = iso => new Date(iso + "T00:00:00").toLocaleDateString("en-US", { day: "2-digit", month: "short", year: "numeric" });
 const esc = s => String(s == null ? "" : s).replace(/"/g, "&quot;").replace(/</g, "&lt;");
@@ -113,7 +115,7 @@ function renderSpotlight() {
         <div class="headline">${esc(t.name)} ${verb} ${esc(labName(t.to))}</div>
         <div class="sub">${sub}</div>
       </div>
-      <a class="cover" href="${shareLink(t)}" target="_blank" rel="noopener" title="Share on X"></a>
+      <a class="cover" href="${profileLink(t)}" title="View ${esc(t.name)}'s profile"></a>
     </article>`;
   };
   document.getElementById("spotlightGrid").innerHTML =
@@ -155,9 +157,9 @@ function miniRow(t, mode) {
   else if (mode === "rumours") right = `<div class="mfee rumor">RUMOUR</div><div class="mdate">${fmtDate(t.date)}</div>`;
   else right = `<div class="mdate">${fmtDate(t.date)}</div>${t.fee ? `<div class="mfee ${feeCls}">${esc(t.fee)}</div>` : ""}`;
   return `<div class="mini">
-    ${avatar(t, "av")}
+    <a href="${profileLink(t)}">${avatar(t, "av")}</a>
     <div class="info">
-      <div class="mname">${esc(t.name)}</div>
+      <a class="mname plink" href="${profileLink(t)}">${esc(t.name)}</a>
       <div class="mmove">${crestBadge(t.from)} <span class="move-arrow">→</span> ${crestBadge(t.to)}</div>
     </div>
     <div class="mright">${right}</div>
@@ -189,8 +191,8 @@ function renderTransfers() {
     const feeCls = t.fee ? (t.rumored ? "rumor" : "has") : "none";
     return `<tr title="${esc(t.note)}">
       <td class="rank">${i + 1}</td>
-      <td><div class="player">${avatar(t, "avatar")}<span>
-        <span class="pname">${esc(t.name)}</span>
+      <td><div class="player"><a href="${profileLink(t)}" class="pavatar">${avatar(t, "avatar")}</a><span>
+        <a class="pname plink" href="${profileLink(t)}">${esc(t.name)}</a>
         ${t.title ? `<span class="ptitle">${esc(t.title)}</span>` : ""}
       </span></div></td>
       <td>${crest(t.from)}</td>
