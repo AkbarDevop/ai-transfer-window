@@ -155,6 +155,26 @@ async function renderNews() {
   }).join("")}</div>`).join("");
 }
 
+/* ---------- arXiv papers ---------- */
+async function renderPapers() {
+  const box = document.getElementById("papers");
+  if (!box) return;
+  let items = [];
+  try { const r = await fetch("/api/papers"); if (r.ok) { const d = await r.json(); items = d.items || d; } } catch {}
+  if (!Array.isArray(items) || !items.length) {
+    box.innerHTML = `<div class="loading">Recent arXiv papers load once deployed (cs.LG / cs.CL / cs.AI).</div>`;
+    return;
+  }
+  box.innerHTML = items.slice(0, 8).map(p => {
+    const authors = (p.authors || []).join(", ") + (p.moreAuthors ? ` +${p.moreAuthors}` : "");
+    return `<a class="paper" href="${esc(p.url)}" target="_blank" rel="noopener">
+      <div class="paper-t">${esc(p.title)}</div>
+      <div class="paper-a">${esc(authors)}</div>
+      <div class="paper-d">${timeAgo(p.date)} ago · arXiv</div>
+    </a>`;
+  }).join("");
+}
+
 /* ---------- mini lists (tri-column) ---------- */
 function miniRow(t, mode) {
   const feeCls = t.rumored ? "rumor" : "has";
@@ -281,6 +301,7 @@ async function boot() {
     renderStandings();
     wireSearch();
     renderNews();
+    renderPapers();
   } catch (e) {
     console.error(e);
     document.getElementById("transferTable").innerHTML =

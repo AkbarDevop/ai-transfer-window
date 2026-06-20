@@ -2,12 +2,14 @@
 // so the site always serves recent news without waiting on a live fetch.
 import { getStore } from "@netlify/blobs";
 import { aggregate } from "./news.mjs";
+import { fetchPapers } from "./papers.mjs";
 
 export default async () => {
-  const items = await aggregate();
-  const store = getStore("news");
-  await store.setJSON("latest", { items, fetchedAt: Date.now() });
-  return new Response(`refreshed ${items.length} items`);
+  const now = Date.now();
+  const [news, papers] = await Promise.all([aggregate(), fetchPapers().catch(() => [])]);
+  await getStore("news").setJSON("latest", { items: news, fetchedAt: now });
+  if (papers.length) await getStore("papers").setJSON("latest", { items: papers, fetchedAt: now });
+  return new Response(`refreshed ${news.length} news, ${papers.length} papers`);
 };
 
 // every 30 minutes (UTC). Netlify invokes this automatically.
