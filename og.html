@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, sans-serif;
+    color: #e8ecf4;
+    background:
+      radial-gradient(900px 500px at 85% -20%, rgba(91,140,255,0.22), transparent 60%),
+      radial-gradient(800px 460px at -10% 110%, rgba(255,210,74,0.14), transparent 55%),
+      #0b0e14;
+    padding: 70px 76px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .top { display: flex; align-items: center; gap: 14px; }
+  .mark { font-size: 34px; }
+  .name { font-weight: 800; font-size: 26px; letter-spacing: -0.01em; }
+  .est { font-size: 13px; font-weight: 800; letter-spacing: 0.16em; color: #0b0e14; background: #ffd24a; padding: 5px 11px; border-radius: 999px; }
+  h1 { font-size: 82px; line-height: 0.98; letter-spacing: -0.04em; font-weight: 850; max-width: 980px; }
+  .grad { background: linear-gradient(100deg, #ffd24a, #5b8cff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { font-size: 27px; color: #8b93a7; margin-top: 22px; max-width: 900px; }
+  .row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .crest { display: inline-flex; align-items: center; justify-content: center; width: 58px; height: 58px; border-radius: 14px; font-size: 18px; font-weight: 800; color: #fff; }
+  .arrow { color: #8b93a7; font-size: 30px; font-weight: 800; }
+  .ticker { font-size: 20px; color: #cbd2e0; font-weight: 600; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <span class="mark">⚡</span>
+    <span class="name">AI Transfer Window</span>
+    <span class="est">EST. 2026</span>
+  </div>
+
+  <div>
+    <h1>The transfer market for<br/><span class="grad">AI researchers.</span></h1>
+    <div class="sub">Who's moving between the frontier labs. The talent war, table-style.</div>
+  </div>
+
+  <div class="row">
+    <span class="crest" style="background:#4285F4">GDM</span>
+    <span class="arrow">→</span>
+    <span class="crest" style="background:#CC785C">ANT</span>
+    <span class="ticker" style="margin-left:20px">John Jumper · Karpathy · the Thinking Machines carousel · and counting</span>
+  </div>
+</body>
+</html>
