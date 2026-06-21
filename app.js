@@ -181,7 +181,7 @@ function miniRow(t, mode) {
   const feeCls = t.rumored ? "rumor" : "has";
   let right;
   if (mode === "deals") right = `<div class="mfee has">${esc(t.fee || "—")}</div>`;
-  else if (mode === "rumours") right = `<div class="mfee rumor">RUMOUR</div><div class="mdate">${fmtDate(t.date)}</div>`;
+  else if (mode === "rumours") right = `<div class="mfee rumor">${t.probability ? t.probability + "%" : "RUMOUR"}</div><div class="mdate">${fmtDate(t.date)}</div>`;
   else right = `<div class="mdate">${fmtDate(t.date)}</div>${t.fee ? `<div class="mfee ${feeCls}">${esc(t.fee)}</div>` : ""}`;
   return `<div class="mini">
     <a href="${profileLink(t)}">${avatar(t, "av")}</a>
@@ -301,6 +301,9 @@ async function boot() {
     wireSearch();
     renderNews();
     renderPapers();
+    if (new URLSearchParams(location.search).get("subscribed")) {
+      const f = document.querySelector(".news-signup"); if (f) f.classList.add("done");
+    }
   } catch (e) {
     console.error(e);
     document.getElementById("transferTable").innerHTML =

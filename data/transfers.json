@@ -61,6 +61,7 @@
       "note": "Headline package reported at ~$1.5B over 6 years. Meta called the figure \"inaccurate and ridiculous\" — treat as rumored.",
       "fee": "~$1.5B / 6yr (disputed)",
       "rumored": true,
+      "probability": 55,
       "sources": [
         "https://thenextweb.com/news/meta-thinking-machines-lab-talent-raid"
       ]
