@@ -114,7 +114,7 @@ function hydratePhotos() {
 
 /* ---------- Spotlight ---------- */
 function renderSpotlight() {
-  const top = TRANSFERS.slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
+  const top = TRANSFERS.slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 5);
   const card = (t, lead) => {
     const verb = t.rumored ? "linked with" : "joins";
     const kicker = t.rumored ? "Rumour" : ((t.role || "Transfer") + " · Official");
@@ -139,22 +139,12 @@ function renderSpotlight() {
 }
 
 /* ---------- News ticker ---------- */
-async function renderNews() {
+let NEWS = [], newsExpanded = false;
+function paintNews() {
   const box = document.getElementById("newsTicker");
-  let items = [], fetchedAt = null;
-  try {
-    const r = await fetch("/api/news");
-    if (r.ok) { const d = await r.json(); items = d.items || d; fetchedAt = d.fetchedAt; }
-  } catch { /* offline */ }
-  if (!Array.isArray(items) || !items.length) {
-    box.innerHTML = `<div class="loading">News ticker is live once deployed (auto-refreshed from Hacker News + Reddit every 30 min).</div>`;
-    return;
-  }
-  const liveEl = document.querySelector("#news .live");
-  if (liveEl && fetchedAt) liveEl.textContent = `updated ${timeAgo(new Date(fetchedAt).toISOString())} ago · live`;
-
+  const list = (newsExpanded ? NEWS.slice(0, 30) : NEWS.slice(0, 9));
   const cols = [[], [], []];
-  items.slice(0, 30).forEach((n, i) => cols[i % 3].push(n));
+  list.forEach((n, i) => cols[i % 3].push(n));
   box.innerHTML = cols.map(col => `<div>${col.map(n => {
     let host = n.source || ""; if (!host) { try { host = new URL(n.url).hostname.replace(/^www\./, ""); } catch {} }
     const pts = n.points ? ` · <span class="pts">▲ ${n.points}</span>` : "";
@@ -167,18 +157,29 @@ async function renderNews() {
     </div>`;
   }).join("")}</div>`).join("");
 }
-
-/* ---------- arXiv papers ---------- */
-async function renderPapers() {
-  const box = document.getElementById("papers");
-  if (!box) return;
-  let items = [];
-  try { const r = await fetch("/api/papers"); if (r.ok) { const d = await r.json(); items = d.items || d; } } catch {}
-  if (!Array.isArray(items) || !items.length) {
-    box.innerHTML = `<div class="loading">Recent arXiv papers load once deployed (cs.LG / cs.CL / cs.AI).</div>`;
+async function renderNews() {
+  let fetchedAt = null;
+  try {
+    const r = await fetch("/api/news");
+    if (r.ok) { const d = await r.json(); NEWS = d.items || d; fetchedAt = d.fetchedAt; }
+  } catch { /* offline */ }
+  if (!Array.isArray(NEWS) || !NEWS.length) {
+    document.getElementById("newsTicker").innerHTML = `<div class="loading">News loads once deployed (auto-refreshed every 30 min from Hacker News, Google News, TechCrunch and more).</div>`;
     return;
   }
-  box.innerHTML = items.slice(0, 8).map(p => {
+  const upd = document.getElementById("newsUpd");
+  if (upd && fetchedAt) upd.textContent = `· updated ${timeAgo(new Date(fetchedAt).toISOString())} ago`;
+  const btn = document.getElementById("newsMore");
+  if (btn) { btn.hidden = NEWS.length <= 9; btn.onclick = () => { newsExpanded = !newsExpanded; btn.textContent = newsExpanded ? "Show less" : `Show more news (${NEWS.length})`; paintNews(); }; btn.textContent = `Show more news (${NEWS.length})`; }
+  paintNews();
+}
+
+/* ---------- arXiv papers ---------- */
+let PAPERS = [], papersExpanded = false;
+function paintPapers() {
+  const box = document.getElementById("papers");
+  const list = papersExpanded ? PAPERS.slice(0, 8) : PAPERS.slice(0, 4);
+  box.innerHTML = list.map(p => {
     const authors = (p.authors || []).join(", ") + (p.moreAuthors ? ` +${p.moreAuthors}` : "");
     return `<a class="paper" href="${esc(p.url)}" target="_blank" rel="noopener">
       <div class="paper-t">${esc(p.title)}</div>
@@ -186,6 +187,18 @@ async function renderPapers() {
       <div class="paper-d">${timeAgo(p.date)} ago · arXiv</div>
     </a>`;
   }).join("");
+}
+async function renderPapers() {
+  const box = document.getElementById("papers");
+  if (!box) return;
+  try { const r = await fetch("/api/papers"); if (r.ok) { const d = await r.json(); PAPERS = d.items || d; } } catch {}
+  if (!Array.isArray(PAPERS) || !PAPERS.length) {
+    box.innerHTML = `<div class="loading">Recent arXiv papers load once deployed (cs.LG / cs.CL / cs.AI).</div>`;
+    return;
+  }
+  const btn = document.getElementById("papersMore");
+  if (btn) { btn.hidden = PAPERS.length <= 4; btn.onclick = () => { papersExpanded = !papersExpanded; btn.textContent = papersExpanded ? "Show less" : "Show more papers"; paintPapers(); }; btn.textContent = "Show more papers"; }
+  paintPapers();
 }
 
 /* ---------- mini lists (tri-column) ---------- */
@@ -209,9 +222,7 @@ function renderMinis() {
   const last = byDate.filter(t => !t.rumored).slice(0, 6);
   const rumours = byDate.filter(t => t.rumored).slice(0, 6);
   const deals = TRANSFERS.slice().filter(t => feeAmount(t) > 0).sort((a, b) => feeAmount(b) - feeAmount(a)).slice(0, 6);
-  const fill = (id, list, mode) =>
-    document.getElementById(id).innerHTML = list.length ? list.map(t => miniRow(t, mode)).join("") : `<div class="empty">Nothing here yet.</div>`;
-  fill("lastTransfers", last, "last");
+  const fill = (id, list, mode) => { const el = document.getElementById(id); if (el) el.innerHTML = list.length ? list.map(t => miniRow(t, mode)).join("") : `<div class="empty">Nothing here yet.</div>`; };
   fill("topRumours", rumours, "rumours");
   fill("biggestDeals", deals, "deals");
   hydratePhotos();

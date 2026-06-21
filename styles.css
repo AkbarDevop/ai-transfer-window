@@ -148,10 +148,16 @@ a:hover { text-decoration: underline; }
 .sec-head h2 { margin: 0; font-size: 17px; color: var(--navy); font-weight: 800; letter-spacing: -0.01em; text-transform: uppercase; }
 .live { color: var(--red); font-size: 11px; font-weight: 700; letter-spacing: 0.05em; }
 
+/* ===== section extras ===== */
+.sec-head .sec-link { margin-left: auto; font-size: 12.5px; font-weight: 700; color: var(--blue-link); }
+.sec-head .upd { color: var(--muted); font-size: 11.5px; font-weight: 600; }
+.show-more { display: block; width: 100%; margin-top: 10px; padding: 10px; background: #fff; border: 1px solid var(--head-border); border-radius: 7px; color: var(--blue-link); font-weight: 700; font-size: 13px; cursor: pointer; transition: background .12s; }
+.show-more:hover { background: var(--head); }
+
 /* ===== spotlight ===== */
 .spotlight-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; }
-.spot { position: relative; border-radius: 7px; overflow: hidden; background: var(--navy); color: #fff; min-height: 230px; display: flex; align-items: flex-end; border: 1px solid var(--head-border); }
-.spot.lead { grid-row: span 2; min-height: 300px; }
+.spot { position: relative; border-radius: 7px; overflow: hidden; background: var(--navy); color: #fff; min-height: 198px; display: flex; align-items: flex-end; border: 1px solid var(--head-border); }
+.spot.lead { grid-row: span 2; min-height: 262px; }
 .spot .photo { position: absolute; inset: 0; background-size: cover; background-position: center; }
 .spot .photo.mono { display: flex; align-items: center; justify-content: center; font-size: 64px; font-weight: 800; color: rgba(255,255,255,0.16); }
 .spot .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,16,30,0) 30%, rgba(10,16,30,0.55) 60%, rgba(10,16,30,0.94) 100%); }
@@ -417,9 +423,11 @@ a.pname.plink:hover, a.mname.plink:hover { color: var(--blue-link); text-decorat
   .wrap { margin-top: 14px; }
   .sec-head h2 { font-size: 15px; }
   .player { min-width: 0; }
-  .spotlight-grid { grid-template-columns: 1fr; }
-  .spot.lead { grid-column: auto; min-height: 220px; }
-  .spot:not(.lead) { min-height: 150px; }
+  /* swipeable strip on mobile so it doesn't push the table down */
+  .spotlight-grid { display: flex; overflow-x: auto; gap: 10px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+  .spotlight-grid::-webkit-scrollbar { display: none; }
+  .spot { flex: 0 0 80%; scroll-snap-align: start; min-height: 158px; grid-row: auto !important; }
+  .spot.lead { flex: 0 0 88%; min-height: 158px; }
   .ticker { grid-template-columns: 1fr; }
   .footer-cols { grid-template-columns: 1fr 1fr; gap: 16px; }
   .subnav-inner { overflow-x: auto; scrollbar-width: none; }

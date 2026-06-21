@@ -49,50 +49,19 @@
   </nav>
 
   <main class="wrap">
-    <!-- SPOTLIGHT -->
+    <!-- SPOTLIGHT: latest marquee moves (scrolls sideways on mobile) -->
     <section class="section" id="spotlight">
-      <div class="sec-head"><h2>Spotlight</h2></div>
+      <div class="sec-head"><h2>Latest moves</h2><a class="sec-link" href="/researchers.html">all researchers →</a></div>
       <div class="spotlight-grid" id="spotlightGrid"></div>
     </section>
 
-    <!-- NEWS TICKER -->
-    <section class="section" id="news">
-      <div class="sec-head"><h2>News ticker</h2><span class="live">● live</span></div>
-      <div class="ticker" id="newsTicker"><div class="loading">Loading AI lab news…</div></div>
-    </section>
-
-    <!-- LATEST RESEARCH (arXiv) -->
-    <section class="section" id="research">
-      <div class="sec-head"><h2>Latest research</h2><span class="live">arXiv</span></div>
-      <div class="papers" id="papers"><div class="loading">Loading recent papers…</div></div>
-    </section>
-
-    <!-- TRANSFERS 3-COLUMN -->
-    <section class="section" id="transfers">
-      <div class="sec-head"><h2>Transfers</h2></div>
-      <div class="tri">
-        <div class="panel">
-          <div class="panel-head sm"><h3>Last transfers</h3></div>
-          <div id="lastTransfers"></div>
-        </div>
-        <div class="panel" id="rumours">
-          <div class="panel-head sm"><h3>Top rumours</h3></div>
-          <div id="topRumours"></div>
-        </div>
-        <div class="panel">
-          <div class="panel-head sm"><h3>Biggest deals</h3></div>
-          <div id="biggestDeals"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FULL TABLE + STANDINGS -->
+    <!-- MAIN: the transfers table is the hero, up top -->
     <section class="section">
       <div class="layout">
         <div class="col-main">
           <div class="panel">
             <div class="panel-head">
-              <h2>All transfers</h2>
+              <h2>Transfers</h2>
               <div class="filters" id="filters"></div>
             </div>
             <div class="tlist" id="transferTable"></div>
@@ -103,31 +72,51 @@
           <div class="panel" id="balance">
             <div class="panel-head"><h2>Transfer balance</h2></div>
             <table class="tm-table standings" id="standings"></table>
-            <div class="panel-foot subtle">Net = signings in minus departures out.</div>
+            <div class="panel-foot subtle">Tap a lab for its squad.</div>
           </div>
-          <div class="panel promo">
-            <div class="promo-body">
-              <div class="promo-k">Deadline day never ends.</div>
-              <p>Every signing posted the moment it breaks.</p>
-              <a class="btn-x" id="sideX" href="#" target="_blank" rel="noopener">Follow the window on X →</a>
-            </div>
+          <div class="panel" id="rumours">
+            <div class="panel-head sm"><h3>Top rumours</h3></div>
+            <div id="topRumours"></div>
           </div>
-
+          <div class="panel">
+            <div class="panel-head sm"><h3>Biggest deals</h3></div>
+            <div id="biggestDeals"></div>
+          </div>
           <div class="panel" id="signup">
-            <div class="panel-head"><h2>Transfer alerts</h2></div>
+            <div class="panel-head sm"><h3>Transfer alerts</h3></div>
             <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?subscribed=1" class="news-signup">
               <input type="hidden" name="form-name" value="newsletter" />
               <p class="hp"><label>Leave blank: <input name="bot-field" /></label></p>
-              <p class="ns-lead">Big AI researcher moves, in your inbox the moment they break.</p>
+              <p class="ns-lead">Big moves, the moment they break.</p>
               <div class="ns-row">
                 <input type="email" name="email" placeholder="you@email.com" required aria-label="email" />
                 <button type="submit">Notify me</button>
               </div>
-              <p class="ns-ok" id="nsOk">✓ You're on the list. Watch this space.</p>
+              <p class="ns-ok" id="nsOk">✓ You're on the list.</p>
             </form>
+          </div>
+          <div class="panel promo">
+            <div class="promo-body">
+              <div class="promo-k">Deadline day never ends.</div>
+              <a class="btn-x" id="sideX" href="#" target="_blank" rel="noopener">Follow on X →</a>
+            </div>
           </div>
         </aside>
       </div>
+    </section>
+
+    <!-- NEWS (collapsible) -->
+    <section class="section" id="news">
+      <div class="sec-head"><h2>News</h2><span class="live">● live</span><span class="upd" id="newsUpd"></span></div>
+      <div class="ticker" id="newsTicker"><div class="loading">Loading AI news…</div></div>
+      <button class="show-more" id="newsMore" hidden>Show more news</button>
+    </section>
+
+    <!-- RESEARCH (collapsible) -->
+    <section class="section" id="research">
+      <div class="sec-head"><h2>Latest research</h2><span class="live">arXiv</span></div>
+      <div class="papers" id="papers"><div class="loading">Loading recent papers…</div></div>
+      <button class="show-more" id="papersMore" hidden>Show more papers</button>
     </section>
   </main>
 
