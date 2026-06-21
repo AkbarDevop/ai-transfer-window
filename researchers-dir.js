@@ -21,9 +21,10 @@ function crestBadge(labId) {
 }
 function avColor(labId) { const c = (LABS[labId] || {}).color || "#16233c"; return /^#0a0a0a$/i.test(c) ? "#16233c" : c; }
 
+const hiRes = u => u ? u.replace(/\/\d+px-/, "/500px-") : u;
 async function getPhoto(wiki) {
   if (!wiki || wiki in PHOTOS) return PHOTOS[wiki];
-  try { const r = await fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(wiki)); if (r.ok) { const j = await r.json(); return PHOTOS[wiki] = (j.thumbnail && j.thumbnail.source) || null; } } catch {}
+  try { const r = await fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(wiki)); if (r.ok) { const j = await r.json(); return PHOTOS[wiki] = (j.thumbnail && hiRes(j.thumbnail.source)) || null; } } catch {}
   return PHOTOS[wiki] = null;
 }
 function hydrate() {
@@ -40,7 +41,7 @@ function hydrate() {
 function avatarHtml(p) {
   const col = avColor(p.lab);
   if (p.photo) return `<span class="ravatar" style="background:${col};background-image:url(${esc(p.photo)})"></span>`;
-  if (p.gh) return `<span class="ravatar" style="background:${col};background-image:url(https://github.com/${esc(p.gh)}.png?size=200)"></span>`;
+  if (p.gh) return `<span class="ravatar" style="background:${col};background-image:url(https://github.com/${esc(p.gh)}.png?size=240)"></span>`;
   if (p.wiki) return `<span class="ravatar" data-wiki="${esc(p.wiki)}"${p.x ? ` data-x="${esc(p.x)}"` : ""} style="background:${col}">${initials(p.name)}</span>`;
   if (p.x) return `<span class="ravatar" style="background:${col};background-image:url(${xAvatar(p.x)})"></span>`;
   return `<span class="ravatar" style="background:${col}">${initials(p.name)}</span>`;

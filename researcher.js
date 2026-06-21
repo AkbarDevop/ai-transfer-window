@@ -56,16 +56,17 @@ function crest(labId) {
   return `<span class="crest">${crestBadge(labId)}<span class="crest-name">${esc(lab.name)}</span></span>`;
 }
 
+const hiRes = u => u ? u.replace(/\/\d+px-/, "/500px-") : u;
 async function getPhotoUrl(tr, info) {
   if (tr && tr.photo) return tr.photo;
-  if (tr && tr.gh) return `https://github.com/${tr.gh}.png?size=200`;
-  if (info && info.links && info.links.github) return `https://github.com/${info.links.github}.png?size=200`;
+  if (tr && tr.gh) return `https://github.com/${tr.gh}.png?size=400`;
+  if (info && info.links && info.links.github) return `https://github.com/${info.links.github}.png?size=400`;
   // Wikipedia photo
   const wiki = (tr && tr.wiki) || (info && info.links && info.links.wikipedia);
   if (wiki && !/^https?:/.test(wiki)) {
     try {
       const r = await fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(wiki));
-      if (r.ok) { const j = await r.json(); if (j.thumbnail) return j.thumbnail.source; }
+      if (r.ok) { const j = await r.json(); if (j.thumbnail) return hiRes(j.thumbnail.source); }
     } catch {}
   }
   // X/Twitter avatar via unavatar (last resort)

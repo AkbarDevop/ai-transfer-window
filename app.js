@@ -47,7 +47,7 @@ const xAvatar = x => `https://unavatar.io/x/${x}?fallback=false`;
 // synchronous sources only (direct photo / github). wiki + x are resolved async (wiki preferred).
 function photoUrl(t) {
   if (t.photo) return t.photo;
-  if (t.gh) return `https://github.com/${t.gh}.png?size=160`;
+  if (t.gh) return `https://github.com/${t.gh}.png?size=240`;
   return null;
 }
 function avatar(t, cls) {
@@ -70,6 +70,8 @@ function feeAmount(t) {
 }
 
 /* ---------- Wikipedia photos ---------- */
+// upscale Wikipedia thumbnail URLs (…/330px-Name.jpg → …/500px-…) for crisp avatars
+const hiRes = u => u ? u.replace(/\/\d+px-/, "/500px-") : u;
 async function getPhoto(wiki) {
   if (!wiki) return null;
   if (wiki in PHOTOS) return PHOTOS[wiki];
@@ -77,7 +79,7 @@ async function getPhoto(wiki) {
     const r = await fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(wiki));
     if (!r.ok) return (PHOTOS[wiki] = null);
     const j = await r.json();
-    return (PHOTOS[wiki] = (j.thumbnail && j.thumbnail.source) || null);
+    return (PHOTOS[wiki] = (j.thumbnail && hiRes(j.thumbnail.source)) || null);
   } catch { return (PHOTOS[wiki] = null); }
 }
 function hydratePhotos() {

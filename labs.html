@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lab — AI Transfer Window</title>
-  <meta name="description" content="AI lab page: current squad, arrivals, departures and models." />
+  <title>Frontier labs — AI Transfer Window</title>
+  <meta name="description" content="The frontier AI labs at a glance — founded, HQ, leadership, focus, funding, notable models, and live transfer balance." />
   <link rel="icon" href="favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -12,7 +12,7 @@
   <header class="nav">
     <div class="nav-inner">
       <a class="brand" href="/"><img class="brand-mark-img" src="logos/brand.svg" alt="" /><span class="brand-name">AI Transfer<span class="brand-accent">Window</span></span></a>
-      <div class="search"><input id="search" type="search" placeholder="Search researchers…" autocomplete="off" /><span class="search-ic">⌕</span></div>
+      <div class="search"><input id="search" type="search" placeholder="Search labs…" autocomplete="off" /><span class="search-ic">⌕</span></div>
       <a id="navX" href="#" target="_blank" rel="noopener" class="nav-x">Follow on X</a>
     </div>
   </header>
@@ -21,14 +21,20 @@
       <a href="/">Home</a>
       <a href="/researchers.html">Researchers</a>
       <a href="/models.html">Models</a>
-      <a href="/labs.html">Labs</a>
+      <a href="/labs.html" class="active">Labs</a>
       <a href="/#news">News</a>
       <a href="/#balance">Tables</a>
       <span class="subnav-right">Window <span class="open-dot"></span> <strong>OPEN</strong></span>
     </div>
   </nav>
-  <main class="wrap" id="lab"><div class="loading-screen">Loading lab…</div></main>
+
+  <main class="wrap">
+    <div class="sec-head"><h2>Frontier labs</h2></div>
+    <div class="labs-grid" id="labsGrid"><div class="loading-screen">Loading labs…</div></div>
+    <p class="fineprint">Facts are public / best-effort. Funding and headcount figures are reported estimates. Click a tracked lab for its squad and transfer history. Not affiliated with any lab.</p>
+  </main>
+
   <footer class="footer"><div class="footer-fine">Curated, not automated. Not affiliated with any lab.</div></footer>
-  <script src="lab.js"></script>
+  <script src="labs.js"></script>
 </body>
 </html>

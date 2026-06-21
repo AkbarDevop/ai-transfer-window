@@ -31,6 +31,7 @@ a:hover { text-decoration: underline; }
 .brand { display: flex; align-items: center; gap: 9px; color: #fff; font-weight: 800; font-size: 19px; letter-spacing: -0.02em; }
 .brand:hover { text-decoration: none; }
 .brand-mark { font-size: 18px; }
+.brand-mark-img { width: 27px; height: 27px; display: block; flex: 0 0 auto; }
 .brand-accent { color: var(--accent); margin-left: 5px; }
 .nav-links { display: flex; align-items: center; gap: 22px; }
 .nav-links a { color: #c7d2e2; font-weight: 600; font-size: 14px; }
@@ -283,6 +284,25 @@ img, .photo { max-width: 100%; }
 .ns-ok { display: none; color: var(--green); font-weight: 700; font-size: 13px; margin: 10px 0 0; }
 .news-signup.done .ns-row, .news-signup.done .ns-lead { display: none; }
 .news-signup.done .ns-ok { display: block; }
+
+/* ===== frontier labs overview ===== */
+.labs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.lab-card { background: #fff; border: 1px solid var(--head-border); border-radius: 9px; padding: 18px; transition: box-shadow .14s; }
+.lab-card:hover { box-shadow: 0 3px 14px rgba(16,30,60,0.08); }
+.lab-card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.lab-card-name { font-weight: 800; font-size: 18px; color: var(--navy); letter-spacing: -0.01em; }
+.lab-card-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.lab-blurb { font-size: 13px; color: var(--text); line-height: 1.5; margin: 0 0 14px; }
+.lab-facts { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
+.lf { display: flex; gap: 10px; font-size: 12.5px; }
+.lf .lk { color: var(--muted); font-weight: 700; width: 96px; flex: 0 0 auto; text-transform: uppercase; font-size: 10px; letter-spacing: 0.04em; padding-top: 2px; }
+.lf .lv { color: var(--text); min-width: 0; }
+.lf .lv .net { font-weight: 800; } .lf .lv .net.pos { color: var(--green); } .lf .lv .net.neg { color: var(--red); }
+.lab-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.lk-btn { font-size: 12.5px; font-weight: 700; padding: 7px 13px; border-radius: 6px; border: 1px solid var(--head-border); color: var(--blue-link); background: #fff; }
+.lk-btn:hover { background: var(--head); text-decoration: none; }
+.lk-btn.primary { background: var(--navy); color: #fff; border-color: var(--navy); }
+@media (max-width: 640px) { .labs-grid { grid-template-columns: 1fr; } .lf .lk { width: 84px; } }
 
 /* ===== lab page ===== */
 .lab-hero { display: flex; align-items: center; gap: 20px; padding: 22px; }
