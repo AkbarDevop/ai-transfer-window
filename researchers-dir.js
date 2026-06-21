@@ -39,24 +39,23 @@ async function getPhoto(wiki) {
   try { const r = await fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(wiki)); if (r.ok) { const j = await r.json(); return PHOTOS[wiki] = (j.thumbnail && hiRes(j.thumbnail.source)) || null; } } catch {}
   return PHOTOS[wiki] = null;
 }
-function hydrate() {
-  document.querySelectorAll(".ravatar[data-wiki]").forEach(async el => {
-    if (el.dataset.done) return; el.dataset.done = "1";
-    let url = await getPhoto(el.getAttribute("data-wiki"));
-    if (!url) { const x = el.getAttribute("data-x"); if (x) url = xAvatar(x); }
-    if (!url) return;
-    el.style.backgroundImage = `url(${url})`; el.textContent = "";
-  });
-}
-
-// photo: direct (gh) sync, else wiki/x async via data-*
+// onerror fallback chain: try the next candidate URL, finally show initials
+window.avErr = function (img) {
+  const rest = (img.getAttribute("data-cands") || "").split("|").filter(Boolean);
+  if (rest.length) { img.setAttribute("data-cands", rest.slice(1).join("|")); img.src = rest[0]; }
+  else { const sp = img.parentElement; sp.textContent = img.getAttribute("data-init") || ""; }
+};
+function hydrate() {}
+// prefer clean square avatars (X / GitHub) over editorial Wikipedia photos (often group shots)
 function avatarHtml(p) {
   const col = avColor(p.lab);
-  if (p.photo) return `<span class="ravatar" style="background:${col};background-image:url(${esc(p.photo)})"></span>`;
-  if (p.gh) return `<span class="ravatar" style="background:${col};background-image:url(https://github.com/${esc(p.gh)}.png?size=240)"></span>`;
-  if (p.wiki) return `<span class="ravatar" data-wiki="${esc(p.wiki)}"${p.x ? ` data-x="${esc(p.x)}"` : ""} style="background:${col}">${initials(p.name)}</span>`;
-  if (p.x) return `<span class="ravatar" style="background:${col};background-image:url(${xAvatar(p.x)})"></span>`;
-  return `<span class="ravatar" style="background:${col}">${initials(p.name)}</span>`;
+  const cands = [];
+  if (p.photo) cands.push(esc(p.photo));
+  if (p.gh) cands.push("https://github.com/" + esc(p.gh) + ".png?size=240");
+  if (p.x) cands.push("https://unavatar.io/x/" + esc(p.x) + "?fallback=false");
+  if (p.wikiUrl) cands.push(esc(p.wikiUrl));
+  if (!cands.length) return `<span class="ravatar" style="background:${col}">${initials(p.name)}</span>`;
+  return `<span class="ravatar" style="background:${col}"><img class="av-img" src="${cands[0]}" data-cands="${cands.slice(1).join("|")}" data-init="${initials(p.name)}" onerror="avErr(this)" alt="" loading="lazy"></span>`;
 }
 
 function sorter(a, b) {
@@ -127,6 +126,8 @@ function renderFilters() {
       x: (latest && latest.x) || links.x || null
     };
   }).filter(p => p.lab);
+  // pre-resolve Wikipedia thumbnail URLs so they can sit in the onerror fallback chain
+  await Promise.all(PEOPLE.map(async p => { if (p.wiki) p.wikiUrl = await getPhoto(p.wiki); }));
   renderFilters(); renderSort(); render();
   const s = document.getElementById("search");
   if (s) s.addEventListener("input", () => { q = s.value.trim(); render(); });

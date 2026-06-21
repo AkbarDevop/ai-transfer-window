@@ -33,21 +33,20 @@ async function getPhoto(wiki) {
   try { const r = await fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(wiki)); if (r.ok) { const j = await r.json(); return PHOTOS[wiki] = (j.thumbnail && hiRes(j.thumbnail.source)) || null; } } catch {}
   return PHOTOS[wiki] = null;
 }
-function hydrate() {
-  document.querySelectorAll(".av[data-wiki]").forEach(async el => {
-    if (el.dataset.done) return; el.dataset.done = "1";
-    let url = await getPhoto(el.getAttribute("data-wiki"));
-    if (!url) { const x = el.getAttribute("data-x"); if (x) url = xAvatar(x); }
-    if (!url) return; el.style.backgroundImage = `url(${url})`; el.textContent = "";
-  });
-}
+window.avErr = function (img) {
+  const rest = (img.getAttribute("data-cands") || "").split("|").filter(Boolean);
+  if (rest.length) { img.setAttribute("data-cands", rest.slice(1).join("|")); img.src = rest[0]; }
+  else { img.parentElement.textContent = img.getAttribute("data-init") || ""; }
+};
+function hydrate() {}
 function avatarHtml(t) {
-  const col = avColor(t.to || t.from);
-  if (t.photo) return `<span class="av" style="background:${col};background-image:url(${esc(t.photo)})"></span>`;
-  if (t.gh) return `<span class="av" style="background:${col};background-image:url(https://github.com/${esc(t.gh)}.png?size=240)"></span>`;
-  if (t.wiki) return `<span class="av" data-wiki="${esc(t.wiki)}"${t.x ? ` data-x="${esc(t.x)}"` : ""} style="background:${col}">${initials(t.name)}</span>`;
-  if (t.x) return `<span class="av" style="background:${col};background-image:url(${xAvatar(t.x)})"></span>`;
-  return `<span class="av" style="background:${col}">${initials(t.name)}</span>`;
+  const col = avColor(t.to || t.from), c = [];
+  if (t.photo) c.push(esc(t.photo));
+  if (t.gh) c.push("https://github.com/" + esc(t.gh) + ".png?size=240");
+  if (t.x) c.push(xAvatar(t.x));
+  if (t.wikiUrl) c.push(esc(t.wikiUrl));
+  if (!c.length) return `<span class="av" style="background:${col}">${initials(t.name)}</span>`;
+  return `<span class="av" style="background:${col}"><img class="av-img" src="${c[0]}" data-cands="${c.slice(1).join("|")}" data-init="${initials(t.name)}" onerror="avErr(this)" alt="" loading="lazy"></span>`;
 }
 
 function personRow(t, dir) {
@@ -75,6 +74,8 @@ function personRow(t, dir) {
   document.title = `${lab.name} — AI Transfer Window`;
 
   const all = [...(seed.transfers || seed), ...(Array.isArray(dynamic) ? dynamic : [])];
+  all.forEach(t => { const r = RES[slugify(t.name)]; if (r && r.links) { if (!t.x && r.links.x) t.x = r.links.x; if (!t.wiki && r.links.wikipedia && !/^https?:/.test(r.links.wikipedia)) t.wiki = r.links.wikipedia; } });
+  await Promise.all(all.map(async t => { if (t.wiki) t.wikiUrl = await getPhoto(t.wiki); }));
   const ins = all.filter(t => t.to === id).sort((a, b) => b.date.localeCompare(a.date));
   const outs = all.filter(t => t.from === id).sort((a, b) => b.date.localeCompare(a.date));
 

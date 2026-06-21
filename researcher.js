@@ -61,7 +61,10 @@ async function getPhotoUrl(tr, info) {
   if (tr && tr.photo) return tr.photo;
   if (tr && tr.gh) return `https://github.com/${tr.gh}.png?size=400`;
   if (info && info.links && info.links.github) return `https://github.com/${info.links.github}.png?size=400`;
-  // Wikipedia photo
+  // X/Twitter avatar (clean square headshot) preferred over editorial Wikipedia photos
+  const x = (tr && tr.x) || (info && info.links && info.links.x);
+  if (x) return `https://unavatar.io/x/${x}?fallback=false`;
+  // Wikipedia photo (last resort — can be a group/event shot)
   const wiki = (tr && tr.wiki) || (info && info.links && info.links.wikipedia);
   if (wiki && !/^https?:/.test(wiki)) {
     try {
@@ -69,9 +72,6 @@ async function getPhotoUrl(tr, info) {
       if (r.ok) { const j = await r.json(); if (j.thumbnail) return hiRes(j.thumbnail.source); }
     } catch {}
   }
-  // X/Twitter avatar via unavatar (last resort)
-  const x = (tr && tr.x) || (info && info.links && info.links.x);
-  if (x) return `https://unavatar.io/x/${x}?fallback=false`;
   return null;
 }
 
@@ -231,11 +231,8 @@ async function boot() {
   getPhotoUrl(latest, info).then(url => {
     if (!url) return;
     const el = document.getElementById("profPhoto");
-    el.classList.remove("mono"); el.classList.add("has-photo");
-    el.style.backgroundImage = `url(${url})`;
-    el.style.backgroundSize = "cover";
-    el.style.backgroundPosition = "center";
-    el.textContent = "";
+    el.classList.remove("mono");
+    el.innerHTML = `<img class="av-img" src="${url}" alt="" onerror="this.parentElement.classList.add('mono');this.parentElement.textContent='${initials(name)}'">`;
   });
 
   // wiki extract -> append to bio

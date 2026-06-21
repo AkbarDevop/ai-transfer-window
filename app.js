@@ -50,12 +50,25 @@ function photoUrl(t) {
   if (t.gh) return `https://github.com/${t.gh}.png?size=240`;
   return null;
 }
+// onerror fallback chain: advance to next candidate, finally show initials
+window.avErr = function (img) {
+  const rest = (img.getAttribute("data-cands") || "").split("|").filter(Boolean);
+  if (rest.length) { img.setAttribute("data-cands", rest.slice(1).join("|")); img.src = rest[0]; }
+  else { img.parentElement.textContent = img.getAttribute("data-init") || ""; }
+};
+// prefer clean square avatars (direct photo / X / GitHub) over editorial Wikipedia photos
+function avatarCands(t) {
+  const c = [];
+  if (t.photo) c.push(esc(t.photo));
+  if (t.gh) c.push("https://github.com/" + esc(t.gh) + ".png?size=240");
+  if (t.x) c.push(xAvatar(t.x));
+  if (t.wikiUrl) c.push(esc(t.wikiUrl));
+  return c;
+}
 function avatar(t, cls) {
-  const url = photoUrl(t);
-  if (url) return `<span class="${cls} has-photo" style="background:${avColor(t)};background-image:url(${esc(url)});background-size:cover;background-position:center"></span>`;
-  if (t.wiki) return `<span class="${cls}" data-wiki="${esc(t.wiki)}"${t.x ? ` data-x="${esc(t.x)}"` : ""} style="background:${avColor(t)}">${initials(t.name)}</span>`;
-  if (t.x) return `<span class="${cls} has-photo" style="background:${avColor(t)};background-image:url(${xAvatar(t.x)});background-size:cover;background-position:center"></span>`;
-  return `<span class="${cls}" style="background:${avColor(t)}">${initials(t.name)}</span>`;
+  const col = avColor(t), cands = avatarCands(t);
+  if (!cands.length) return `<span class="${cls}" style="background:${col}">${initials(t.name)}</span>`;
+  return `<span class="${cls}" style="background:${col}"><img class="av-img" src="${cands[0]}" data-cands="${cands.slice(1).join("|")}" data-init="${initials(t.name)}" onerror="avErr(this)" alt="" loading="lazy"></span>`;
 }
 function shareLink(t) {
   const tag = t.rumored ? "🔮 RUMOR" : "🔁";
@@ -106,14 +119,10 @@ function renderSpotlight() {
     const verb = t.rumored ? "linked with" : "joins";
     const kicker = t.rumored ? "Rumour" : ((t.role || "Transfer") + " · Official");
     const sub = `From ${labName(t.from)}${t.fee ? " · " + esc(t.fee) : ""}`;
-    const url = photoUrl(t);
-    const photo = url
-      ? `<div class="photo has-photo" style="background-image:url(${esc(url)});background-size:cover;background-position:center"></div>`
-      : t.wiki
-        ? `<div class="photo" data-wiki="${esc(t.wiki)}"${t.x ? ` data-x="${esc(t.x)}"` : ""}></div>`
-        : t.x
-          ? `<div class="photo has-photo" style="background-image:url(${xAvatar(t.x)});background-size:cover;background-position:center"></div>`
-          : `<div class="photo mono" style="background:${avColor(t)}">${initials(t.name)}</div>`;
+    const cands = avatarCands(t);
+    const photo = cands.length
+      ? `<div class="photo"><img class="av-img" src="${cands[0]}" data-cands="${cands.slice(1).join("|")}" data-init="${initials(t.name)}" onerror="avErr(this)" alt=""></div>`
+      : `<div class="photo mono" style="background:${avColor(t)}">${initials(t.name)}</div>`;
     return `<article class="spot ${lead ? "lead" : ""}">
       ${photo}<div class="scrim"></div>
       <div class="meta">
@@ -145,14 +154,15 @@ async function renderNews() {
   if (liveEl && fetchedAt) liveEl.textContent = `updated ${timeAgo(new Date(fetchedAt).toISOString())} ago · live`;
 
   const cols = [[], [], []];
-  items.slice(0, 24).forEach((n, i) => cols[i % 3].push(n));
+  items.slice(0, 30).forEach((n, i) => cols[i % 3].push(n));
   box.innerHTML = cols.map(col => `<div>${col.map(n => {
     let host = n.source || ""; if (!host) { try { host = new URL(n.url).hostname.replace(/^www\./, ""); } catch {} }
+    const pts = n.points ? ` · <span class="pts">▲ ${n.points}</span>` : "";
     return `<div class="tick">
       <span class="when">${timeAgo(n.date)}</span>
       <span class="body">
         <a class="t" href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a>
-        <span class="src">${esc(host)} · <span class="pts">▲ ${n.points}</span> · ${n.comments || 0} comments</span>
+        <span class="src">${esc(host)}${pts}</span>
       </span>
     </div>`;
   }).join("")}</div>`).join("");
@@ -286,14 +296,16 @@ async function boot() {
     const byId = new Map();
     [...(seed.transfers || seed), ...(Array.isArray(dynamic) ? dynamic : [])].forEach(t => byId.set(t.id, t));
     TRANSFERS = [...byId.values()].map(t => {
-      // backfill photo sources from researcher links: x is the wiki-fails fallback; gh only when no primary source
+      // pull photo hints from researcher links (X preferred over editorial Wikipedia photos)
       const r = researchers[slugify(t.name)];
       if (r && r.links) {
         if (!t.x && r.links.x) t.x = r.links.x;
-        if (!t.photo && !t.gh && !t.wiki && r.links.github) t.gh = r.links.github;
+        if (!t.wiki && r.links.wikipedia && !/^https?:/.test(r.links.wikipedia)) t.wiki = r.links.wikipedia;
       }
       return t;
     });
+    // pre-resolve Wikipedia thumbnail URLs so they sit in the onerror fallback chain
+    await Promise.all(TRANSFERS.map(async t => { if (t.wiki) t.wikiUrl = await getPhoto(t.wiki); }));
 
     renderSpotlight();
     renderMinis();
