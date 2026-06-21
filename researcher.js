@@ -98,6 +98,16 @@ async function getNews(name) {
   } catch { return []; }
 }
 
+async function getScholar(name) {
+  try {
+    const r = await fetch(`https://api.openalex.org/authors?search=${encodeURIComponent(name)}&per-page=1&mailto=k.akbarme@gmail.com`);
+    if (!r.ok) return null;
+    const a = ((await r.json()).results || [])[0];
+    if (!a || !a.cited_by_count) return null;
+    return { h: a.summary_stats.h_index, i10: a.summary_stats.i10_index, cites: a.cited_by_count, works: a.works_count, url: a.id };
+  } catch { return null; }
+}
+
 function linkBtns(info, tr) {
   const L = (info && info.links) || {};
   const btns = [];
@@ -217,6 +227,10 @@ async function boot() {
           <div class="panel-head"><h2>Profile</h2></div>
           <table class="tm-table facts"><tbody>${factsHtml}</tbody></table>
         </div>
+        <div class="panel" id="impactPanel" style="display:none">
+          <div class="panel-head"><h2>Academic impact</h2></div>
+          <div class="impact" id="impact"></div>
+        </div>
         <div class="panel promo">
           <div class="promo-body">
             <div class="promo-k">Follow the window.</div>
@@ -255,6 +269,19 @@ async function boot() {
         <span class="src">${esc(host)} · <span class="pts">▲ ${n.points}</span> · ${fmtDate(n.date.slice(0, 10))}</span>
       </span></div>`;
     }).join("");
+  });
+
+  // academic impact (OpenAlex citations + h-index)
+  getScholar(name).then(s => {
+    if (!s) return;
+    document.getElementById("impact").innerHTML = `
+      <div class="imp-grid">
+        <div class="imp"><div class="imp-n">${s.cites.toLocaleString()}</div><div class="imp-l">Citations</div></div>
+        <div class="imp"><div class="imp-n">${s.h}</div><div class="imp-l">h-index</div></div>
+        <div class="imp"><div class="imp-n">${s.works}</div><div class="imp-l">Papers</div></div>
+      </div>
+      <a class="impact-link" href="${esc(s.url)}" target="_blank" rel="noopener">View on OpenAlex →</a>`;
+    document.getElementById("impactPanel").style.display = "";
   });
 
   // search box -> home

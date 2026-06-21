@@ -123,8 +123,9 @@ function renderSpotlight() {
     const photo = cands.length
       ? `<div class="photo"><img class="av-img" src="${cands[0]}" data-cands="${cands.slice(1).join("|")}" data-init="${initials(t.name)}" onerror="avErr(this)" alt=""></div>`
       : `<div class="photo mono" style="background:${avColor(t)}">${initials(t.name)}</div>`;
+    const stamp = lead && !t.rumored ? `<div class="herewego">HERE WE GO ✅</div>` : (t.rumored ? `<div class="herewego rumour">🔵 RUMOUR</div>` : "");
     return `<article class="spot ${lead ? "lead" : ""}">
-      ${photo}<div class="scrim"></div>
+      ${photo}<div class="scrim"></div>${stamp}
       <div class="meta">
         <div class="kicker">${esc(kicker)}</div>
         <div class="headline">${esc(t.name)} ${verb} ${esc(labName(t.to))}</div>
