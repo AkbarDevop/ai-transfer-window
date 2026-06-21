@@ -60,5 +60,25 @@
     "short": "NFDG",
     "color": "#8b97a8",
     "logo": null
+  },
+  "apple": {
+    "name": "Apple",
+    "short": "APL",
+    "color": "#444444",
+    "logo": null,
+    "favicon": "apple.com"
+  },
+  "mistral": {
+    "name": "Mistral AI",
+    "short": "MST",
+    "color": "#FA520F",
+    "logo": null,
+    "favicon": "mistral.ai"
+  },
+  "ineffable": {
+    "name": "Ineffable Intelligence",
+    "short": "INF",
+    "color": "#6E56CF",
+    "logo": null
   }
 }

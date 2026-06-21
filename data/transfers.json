@@ -239,7 +239,8 @@
       "sources": [
         "https://en.wikipedia.org/wiki/Noam_Shazeer"
       ],
-      "id": "noam-shazeer-characterai-deepmind-2024-08"
+      "id": "noam-shazeer-characterai-deepmind-2024-08",
+      "photo": "https://unavatar.io/twitter/NoamShazeer"
     },
     {
       "name": "Lucas Beyer",
@@ -287,7 +288,8 @@
       "sources": [
         "https://the-decoder.com/openai-hires-three-google-deepmind-researchers-for-multimodal-ai-work/"
       ],
-      "id": "xiaohua-zhai-deepmind-openai-2024-12"
+      "id": "xiaohua-zhai-deepmind-openai-2024-12",
+      "photo": "https://unavatar.io/x/xiaohuazhai"
     },
     {
       "name": "Alexandr Wang",
@@ -336,6 +338,163 @@
         "https://en.wikipedia.org/wiki/Daniel_Gross_(entrepreneur)"
       ],
       "id": "daniel-gross-ssi-meta-2025-07"
+    },
+    {
+      "name": "Lilian Weng",
+      "from": "openai",
+      "to": "tml",
+      "date": "2024-11-15",
+      "role": "Safety",
+      "title": "ex-OpenAI VP, Research & Safety",
+      "note": "Left OpenAI after ~7 years to co-found Thinking Machines Lab.",
+      "fee": null,
+      "rumored": false,
+      "x": "lilianweng",
+      "sources": [
+        "https://techcrunch.com/2024/11/08/openai-loses-another-lead-safety-researcher-lilian-weng/"
+      ],
+      "id": "lilian-weng-openai-tml-2024-11"
+    },
+    {
+      "name": "Durk Kingma",
+      "from": "openai",
+      "to": "anthropic",
+      "date": "2024-10-01",
+      "role": "Research",
+      "title": "OpenAI co-founder · Adam, VAE",
+      "note": "OpenAI co-founder (Adam optimizer, VAE) joined Anthropic.",
+      "fee": null,
+      "rumored": false,
+      "wiki": "Diederik Kingma",
+      "x": "dpkingma",
+      "sources": [
+        "https://techcrunch.com/2024/10/01/anthropic-hires-openai-co-founder-durk-kingma/"
+      ],
+      "id": "durk-kingma-openai-anthropic-2024-10"
+    },
+    {
+      "name": "David Silver",
+      "from": "deepmind",
+      "to": "ineffable",
+      "date": "2026-01-30",
+      "role": "Leadership",
+      "title": "AlphaGo / AlphaZero lead",
+      "note": "Left DeepMind to found Ineffable Intelligence (world-models superintelligence; ~$1.1B seed).",
+      "fee": null,
+      "rumored": false,
+      "wiki": "David Silver (computer scientist)",
+      "sources": [
+        "https://fortune.com/2026/01/30/google-deepmind-ai-researcher-david-silver-leaves-to-found-ai-startup-ineffable-intelligence/"
+      ],
+      "id": "david-silver-deepmind-ineffable-2026-01"
+    },
+    {
+      "name": "Trapit Bansal",
+      "from": "openai",
+      "to": "meta",
+      "date": "2025-06-26",
+      "role": "Research",
+      "title": "o1 reasoning contributor",
+      "note": "Foundational o1 reasoning contributor joined Meta Superintelligence Labs.",
+      "fee": null,
+      "rumored": false,
+      "sources": [
+        "https://techcrunch.com/2025/06/26/meta-hires-key-openai-researcher-to-work-on-ai-reasoning-models/"
+      ],
+      "id": "trapit-bansal-openai-meta-2025-06"
+    },
+    {
+      "name": "Shengjia Zhao",
+      "from": "openai",
+      "to": "meta",
+      "date": "2025-06-28",
+      "role": "Research",
+      "title": "Meta MSL chief scientist",
+      "note": "ChatGPT/GPT-4 contributor; named chief scientist of Meta Superintelligence Labs.",
+      "fee": null,
+      "rumored": false,
+      "sources": [
+        "https://www.cnbc.com/2025/07/25/zuckerberg-shengjia-zhao-meta-ai-lab-chief-scientist-openai.html"
+      ],
+      "id": "shengjia-zhao-openai-meta-2025-06"
+    },
+    {
+      "name": "Jiahui Yu",
+      "from": "openai",
+      "to": "meta",
+      "date": "2025-06-28",
+      "role": "Research",
+      "title": "ex-OpenAI Perception lead",
+      "note": "Led OpenAI's multimodal Perception team before Meta.",
+      "fee": null,
+      "rumored": false,
+      "sources": [
+        "https://fortune.com/2025/06/28/meta-four-openai-researchers-superintelligence-team-ai-talent-competition/"
+      ],
+      "id": "jiahui-yu-openai-meta-2025-06"
+    },
+    {
+      "name": "Hongyu Ren",
+      "from": "openai",
+      "to": "meta",
+      "date": "2025-06-28",
+      "role": "Research",
+      "title": "GPT-4o contributor",
+      "note": "GPT-4o + o-mini contributor; led OpenAI post-training.",
+      "fee": null,
+      "rumored": false,
+      "sources": [
+        "https://fortune.com/2025/06/28/meta-four-openai-researchers-superintelligence-team-ai-talent-competition/"
+      ],
+      "id": "hongyu-ren-openai-meta-2025-06"
+    },
+    {
+      "name": "Shuchao Bi",
+      "from": "openai",
+      "to": "meta",
+      "date": "2025-06-28",
+      "role": "Research",
+      "title": "GPT-4o voice co-creator",
+      "note": "Co-created GPT-4o voice mode; joined Meta Superintelligence Labs.",
+      "fee": null,
+      "rumored": false,
+      "x": "shuchaobi",
+      "sources": [
+        "https://the-decoder.com/meta-hires-two-more-leading-openai-researchers-for-its-superalignment-team/"
+      ],
+      "id": "shuchao-bi-openai-meta-2025-06"
+    },
+    {
+      "name": "Ruoming Pang",
+      "from": "apple",
+      "to": "meta",
+      "date": "2025-07-07",
+      "role": "Research",
+      "title": "ex-Apple foundation models head",
+      "note": "Apple's foundation-models head left for Meta (reported $200M+ package).",
+      "fee": "$200M+ (reported)",
+      "rumored": false,
+      "sources": [
+        "https://techcrunch.com/2025/07/07/meta-reportedly-recruits-apples-head-of-ai-models/"
+      ],
+      "id": "ruoming-pang-apple-meta-2025-07"
+    },
+    {
+      "name": "Arthur Mensch",
+      "from": "deepmind",
+      "to": "mistral",
+      "date": "2023-05-01",
+      "role": "Leadership",
+      "title": "Mistral AI co-founder & CEO",
+      "note": "Left DeepMind to co-found and lead Mistral AI.",
+      "fee": null,
+      "rumored": false,
+      "wiki": "Arthur Mensch",
+      "x": "arthurmensch",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Arthur_Mensch"
+      ],
+      "id": "arthur-mensch-deepmind-mistral-2023-05"
     }
   ]
 }

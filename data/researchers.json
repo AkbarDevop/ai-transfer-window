@@ -557,7 +557,7 @@
     "links": {
       "wikipedia": null,
       "github": null,
-      "x": null,
+      "x": "xiaohuazhai",
       "site": null,
       "scholar": null
     }
@@ -652,6 +652,278 @@
       "wikipedia": "Daniel Gross (entrepreneur)",
       "github": "danielgross",
       "x": "danielgross",
+      "site": null,
+      "scholar": null
+    }
+  },
+  "lilian-weng": {
+    "name": "Lilian Weng",
+    "nationality": "China",
+    "bornYear": null,
+    "education": "PhD-level ML; Peking University; Indiana University Bloomington",
+    "role": "Safety",
+    "knownFor": "AI safety · Lil'Log",
+    "bio": "Lilian Weng spent ~7 years at OpenAI, most recently as VP of Research & Safety, and is widely followed for her deeply technical 'Lil'Log' ML blog. She left in late 2024 to co-found Thinking Machines Lab.",
+    "careerPath": [
+      {
+        "org": "OpenAI",
+        "years": "2018–2024"
+      },
+      {
+        "org": "Thinking Machines Lab",
+        "years": "2024–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": null,
+      "x": "lilianweng",
+      "site": "https://lilianweng.github.io",
+      "scholar": null
+    }
+  },
+  "durk-kingma": {
+    "name": "Durk Kingma",
+    "nationality": "Netherlands",
+    "bornYear": null,
+    "education": "PhD, University of Amsterdam",
+    "role": "Research",
+    "knownFor": "Adam optimizer · VAE",
+    "bio": "Diederik 'Durk' Kingma is an OpenAI co-founder best known for co-inventing the Adam optimizer and the variational autoencoder (VAE). After OpenAI and Google Brain/DeepMind, he joined Anthropic in October 2024.",
+    "careerPath": [
+      {
+        "org": "OpenAI",
+        "years": "2015–2018"
+      },
+      {
+        "org": "Google Brain",
+        "years": "2018–2024"
+      },
+      {
+        "org": "Anthropic",
+        "years": "2024–"
+      }
+    ],
+    "links": {
+      "wikipedia": "Diederik Kingma",
+      "github": null,
+      "x": "dpkingma",
+      "site": null,
+      "scholar": null
+    }
+  },
+  "david-silver": {
+    "name": "David Silver",
+    "nationality": "United Kingdom",
+    "bornYear": null,
+    "education": "PhD, University of Alberta",
+    "role": "Leadership",
+    "knownFor": "AlphaGo · AlphaZero",
+    "bio": "David Silver led DeepMind's reinforcement-learning research behind AlphaGo and AlphaZero. In 2026 he left to found Ineffable Intelligence, pursuing endlessly-learning superintelligence built on world models.",
+    "careerPath": [
+      {
+        "org": "DeepMind",
+        "years": "2013–2026"
+      },
+      {
+        "org": "Ineffable Intelligence",
+        "years": "2026–"
+      }
+    ],
+    "links": {
+      "wikipedia": "David Silver (computer scientist)",
+      "github": null,
+      "x": null,
+      "site": null,
+      "scholar": null
+    }
+  },
+  "trapit-bansal": {
+    "name": "Trapit Bansal",
+    "nationality": "India",
+    "bornYear": null,
+    "education": "PhD, UMass Amherst",
+    "role": "Research",
+    "knownFor": "o1 reasoning",
+    "bio": "Trapit Bansal helped kickstart OpenAI's RL work alongside Ilya Sutskever and was a foundational contributor to the o1 reasoning model. He joined Meta's Superintelligence Labs in 2025.",
+    "careerPath": [
+      {
+        "org": "OpenAI",
+        "years": "2022–2025"
+      },
+      {
+        "org": "Meta",
+        "years": "2025–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": null,
+      "x": null,
+      "site": null,
+      "scholar": null
+    }
+  },
+  "shengjia-zhao": {
+    "name": "Shengjia Zhao",
+    "nationality": "China",
+    "bornYear": null,
+    "education": "PhD, Stanford University",
+    "role": "Research",
+    "knownFor": "ChatGPT · GPT-4",
+    "bio": "Shengjia Zhao was a core OpenAI researcher behind the original ChatGPT and GPT-4. He joined Meta in 2025 and was named chief scientist of its AI Superintelligence group.",
+    "careerPath": [
+      {
+        "org": "OpenAI",
+        "years": "2022–2025"
+      },
+      {
+        "org": "Meta",
+        "years": "2025–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": null,
+      "x": null,
+      "site": null,
+      "scholar": null
+    }
+  },
+  "jiahui-yu": {
+    "name": "Jiahui Yu",
+    "nationality": "China",
+    "bornYear": null,
+    "education": "PhD, UIUC",
+    "role": "Research",
+    "knownFor": "Multimodal perception",
+    "bio": "Jiahui Yu led OpenAI's Perception team building multimodal image and audio capabilities, after large-scale vision-language work at Google. He joined Meta's Superintelligence Labs in 2025.",
+    "careerPath": [
+      {
+        "org": "Google",
+        "years": "2020–2023"
+      },
+      {
+        "org": "OpenAI",
+        "years": "2023–2025"
+      },
+      {
+        "org": "Meta",
+        "years": "2025–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": null,
+      "x": null,
+      "site": null,
+      "scholar": null
+    }
+  },
+  "hongyu-ren": {
+    "name": "Hongyu Ren",
+    "nationality": "China",
+    "bornYear": null,
+    "education": "PhD, Stanford University",
+    "role": "Research",
+    "knownFor": "GPT-4o · o-mini models",
+    "bio": "Hongyu Ren was a core contributor to GPT-4o and helped build OpenAI's 4o-mini / o1-mini / o3 / o4-mini models and led a post-training team. He joined Meta's Superintelligence Labs in 2025.",
+    "careerPath": [
+      {
+        "org": "OpenAI",
+        "years": "2023–2025"
+      },
+      {
+        "org": "Meta",
+        "years": "2025–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": null,
+      "x": null,
+      "site": null,
+      "scholar": null
+    }
+  },
+  "shuchao-bi": {
+    "name": "Shuchao Bi",
+    "nationality": "China",
+    "bornYear": null,
+    "education": "Graduate study, UC Berkeley",
+    "role": "Research",
+    "knownFor": "GPT-4o voice",
+    "bio": "Shuchao Bi joined OpenAI in 2024 as head of post-training for multimodal models and co-created GPT-4o's voice mode. He moved to Meta's Superintelligence Labs in 2025.",
+    "careerPath": [
+      {
+        "org": "OpenAI",
+        "years": "2024–2025"
+      },
+      {
+        "org": "Meta",
+        "years": "2025–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": null,
+      "x": "shuchaobi",
+      "site": null,
+      "scholar": null
+    }
+  },
+  "ruoming-pang": {
+    "name": "Ruoming Pang",
+    "nationality": "China",
+    "bornYear": null,
+    "education": "PhD, USC",
+    "role": "Research",
+    "knownFor": "Apple foundation models",
+    "bio": "Ruoming Pang ran Apple's team that trained the foundation models powering Apple Intelligence, after years at Google. In 2025 Meta recruited him for its Superintelligence Labs in a reported $200M+ package.",
+    "careerPath": [
+      {
+        "org": "Google",
+        "years": "2010–2021"
+      },
+      {
+        "org": "Apple",
+        "years": "2021–2025"
+      },
+      {
+        "org": "Meta",
+        "years": "2025–"
+      }
+    ],
+    "links": {
+      "wikipedia": null,
+      "github": null,
+      "x": null,
+      "site": null,
+      "scholar": null
+    }
+  },
+  "arthur-mensch": {
+    "name": "Arthur Mensch",
+    "nationality": "France",
+    "bornYear": 1992,
+    "education": "PhD, ENS / Inria (Paris-Saclay)",
+    "role": "Leadership",
+    "knownFor": "Mistral AI co-founder & CEO",
+    "bio": "Arthur Mensch worked ~3 years at DeepMind Paris on LLMs and retrieval-augmented architectures. In 2023 he co-founded Mistral AI with Guillaume Lample and Timothée Lacroix, becoming CEO of Europe's leading open-weight LLM lab.",
+    "careerPath": [
+      {
+        "org": "DeepMind",
+        "years": "2020–2023"
+      },
+      {
+        "org": "Mistral AI",
+        "years": "2023–"
+      }
+    ],
+    "links": {
+      "wikipedia": "Arthur Mensch",
+      "github": null,
+      "x": "arthurmensch",
       "site": null,
       "scholar": null
     }
