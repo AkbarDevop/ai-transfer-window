@@ -183,16 +183,27 @@ a:hover { text-decoration: underline; }
 .tick .src .pts { color: var(--green); font-weight: 700; }
 .loading { padding: 22px; color: var(--muted); grid-column: 1 / -1; }
 
-/* ===== talent flow viz ===== */
-.flow-panel { padding: 6px; }
-.flow-svg { width: 100%; height: auto; display: block; max-height: 600px; }
+/* ===== talent flow viz (animated) ===== */
+.flow-panel { padding: 6px; position: relative; }
+.flow-svg { width: 100%; height: auto; display: block; }
 .flow-link { transition: stroke-opacity .15s; }
-.flow-svg.hovering .flow-link { stroke-opacity: 0.07; }
-.flow-svg.hovering .flow-link.on { stroke-opacity: 0.85; }
-.flow-count { font-size: 12px; font-weight: 800; fill: #1c2430; paint-order: stroke; stroke: #fff; stroke-width: 3px; }
+.flow-dot { transition: opacity .15s; }
+.flow-svg.hovering .flow-link { stroke-opacity: 0.05; }
+.flow-svg.hovering .flow-dot { opacity: 0.1; }
+.flow-svg.hovering .flow-link.on { stroke-opacity: 0.68; }
+.flow-svg.hovering .flow-dot.on { opacity: 1; }
+.flow-count { font-size: 13px; font-weight: 800; fill: #1c2430; paint-order: stroke; stroke: #fff; stroke-width: 3.5px; }
 .flow-node { cursor: pointer; }
-.flow-node circle { transition: stroke-width .12s; }
-.flow-node:hover circle { stroke-width: 4; }
+.flow-node .fn-ring { transition: stroke-width .12s; }
+.flow-node:hover .fn-ring { stroke-width: 4.5; }
+.flow-tip { position: absolute; top: 12px; left: 12px; max-width: 320px; background: rgba(22,35,60,0.97); color: #fff; border-radius: 9px; padding: 11px 13px; font-size: 12.5px; box-shadow: 0 6px 22px rgba(0,0,0,0.32); pointer-events: none; z-index: 5; }
+.flow-tip[hidden] { display: none; }
+.ft-h { font-weight: 800; font-size: 14px; margin-bottom: 3px; }
+.ft-net { color: #aebbd0; font-size: 11.5px; margin-bottom: 7px; }
+.ft-row { margin-top: 4px; line-height: 1.45; color: #e8ecf4; }
+.ft-k { font-weight: 800; font-size: 10px; padding: 1px 5px; border-radius: 4px; margin-right: 4px; }
+.ft-k.in { background: rgba(52,211,153,0.25); color: #6ee7b7; }
+.ft-k.out { background: rgba(248,113,113,0.25); color: #fca5a5; }
 #flow .upd { color: var(--muted); font-size: 11.5px; font-weight: 600; }
 
 /* ===== arXiv papers ===== */

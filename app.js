@@ -175,61 +175,78 @@ async function renderNews() {
   paintNews();
 }
 
-/* ---------- talent-flow visualization ---------- */
+/* ---------- talent-flow visualization (animated) ---------- */
 function renderFlow() {
   const box = document.getElementById("flowViz");
   if (!box) return;
   const used = [...new Set(TRANSFERS.flatMap(t => [t.from, t.to]))].filter(l => LABS[l]);
-  const flows = {};
-  TRANSFERS.forEach(t => { if (t.from === t.to) return; const k = t.from + "|" + t.to; flows[k] = (flows[k] || 0) + 1; });
-  const inv = {}; used.forEach(l => inv[l] = 0);
-  TRANSFERS.forEach(t => { if (inv[t.from] != null) inv[t.from]++; if (inv[t.to] != null) inv[t.to]++; });
+  const flows = {}, members = {}, inc = {}, outc = {}, inv = {};
+  used.forEach(l => { inc[l] = []; outc[l] = []; inv[l] = 0; });
+  TRANSFERS.forEach(t => {
+    if (inv[t.to] != null) { inv[t.to]++; inc[t.to].push(t.name); }
+    if (inv[t.from] != null) { inv[t.from]++; outc[t.from].push(t.name); }
+    if (t.from === t.to) return;
+    const k = t.from + "|" + t.to; flows[k] = (flows[k] || 0) + 1; (members[k] = members[k] || []).push(t.name);
+  });
 
-  const W = 880, H = 600, cx = W / 2, cy = H / 2 - 4, R = 205;
+  const W = 980, H = 720, cx = W / 2, cy = H / 2, R = 250;
   const N = used.length, pos = {};
   used.forEach((l, i) => { const a = -Math.PI / 2 + i / N * 2 * Math.PI; pos[l] = { x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) }; });
   const maxC = Math.max(1, ...Object.values(flows));
   const maxI = Math.max(1, ...Object.values(inv));
-  const nodeR = l => 19 + (inv[l] / maxI) * 13;
+  const nodeR = l => 22 + (inv[l] / maxI) * 16;
 
-  let links = "";
-  Object.entries(flows).sort((a, b) => a[1] - b[1]).forEach(([k, c]) => {
+  let tracks = "", dots = "", counts = "";
+  Object.entries(flows).sort((a, b) => a[1] - b[1]).forEach(([k, c], idx) => {
     const [from, to] = k.split("|"); const p1 = pos[from], p2 = pos[to]; if (!p1 || !p2) return;
-    const dx = p2.x - p1.x, dy = p2.y - p1.y, len = Math.hypot(dx, dy) || 1, ux = dx / len, uy = dy / len;
+    const dx = p2.x - p1.x, dy = p2.y - p1.y, dist = Math.hypot(dx, dy) || 1, ux = dx / dist, uy = dy / dist;
     const sx = p1.x + ux * nodeR(from), sy = p1.y + uy * nodeR(from);
-    const ex = p2.x - ux * (nodeR(to) + 9), ey = p2.y - uy * (nodeR(to) + 9);
-    const mx = (sx + ex) / 2, my = (sy + ey) / 2, ctx = cx + (mx - cx) * 0.4, cty = cy + (my - cy) * 0.4;
+    const ex = p2.x - ux * (nodeR(to) + 11), ey = p2.y - uy * (nodeR(to) + 11);
+    const mx = (sx + ex) / 2, my = (sy + ey) / 2, ctx = cx + (mx - cx) * 0.42, cty = cy + (my - cy) * 0.42;
     const w = 2 + (c / maxC) * 13, col = (LABS[from] || {}).color || "#888";
-    links += `<path class="flow-link" d="M${sx.toFixed(1)},${sy.toFixed(1)} Q${ctx.toFixed(1)},${cty.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)}" fill="none" stroke="${col}" stroke-width="${w.toFixed(1)}" stroke-opacity="0.42" stroke-linecap="round" marker-end="url(#fa)" data-from="${from}" data-to="${to}"></path>`;
-    if (c >= 2) links += `<text class="flow-count" x="${ctx.toFixed(1)}" y="${cty.toFixed(1)}" text-anchor="middle" dy="4">${c}</text>`;
+    const d = `M${sx.toFixed(1)},${sy.toFixed(1)} Q${ctx.toFixed(1)},${cty.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)}`;
+    const id = "fp" + idx, len = dist * 1.15, dur = Math.max(2.2, Math.min(7, len / 78));
+    tracks += `<path id="${id}" class="flow-link" d="${d}" fill="none" stroke="${col}" stroke-width="${w.toFixed(1)}" stroke-opacity="0.32" stroke-linecap="round" marker-end="url(#fa)" data-from="${from}" data-to="${to}"></path>`;
+    const n = Math.min(6, Math.max(2, c * 2));
+    for (let i = 0; i < n; i++) {
+      dots += `<circle class="flow-dot" r="${(2.6 + w * 0.18).toFixed(1)}" fill="${col}" data-from="${from}" data-to="${to}"><animateMotion dur="${dur.toFixed(2)}s" repeatCount="indefinite" begin="-${(dur * i / n).toFixed(2)}s"><mpath href="#${id}"></mpath></animateMotion></circle>`;
+    }
+    if (c >= 2) counts += `<text class="flow-count" x="${ctx.toFixed(1)}" y="${cty.toFixed(1)}" text-anchor="middle" dy="4">${c}</text>`;
   });
 
   let nodes = "";
   used.forEach(l => {
     const p = pos[l], lab = LABS[l], r = nodeR(l);
     let inner;
-    if (lab.logo) inner = `<image href="${lab.logo}" x="${(p.x - r * 0.6).toFixed(1)}" y="${(p.y - r * 0.6).toFixed(1)}" width="${(r * 1.2).toFixed(1)}" height="${(r * 1.2).toFixed(1)}"></image>`;
-    else if (lab.favicon) inner = `<image href="${faviconUrl(lab.favicon)}" x="${(p.x - r * 0.5).toFixed(1)}" y="${(p.y - r * 0.5).toFixed(1)}" width="${r.toFixed(1)}" height="${r.toFixed(1)}"></image>`;
-    else inner = `<text x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle" dy="4" font-size="11" font-weight="800" fill="${lab.color}">${lab.short}</text>`;
-    nodes += `<g class="flow-node" data-lab="${l}"><title>${esc(lab.name)} · ${inv[l]} moves</title>
-      <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r.toFixed(1)}" fill="#fff" stroke="${lab.color}" stroke-width="2.5"></circle>
+    if (lab.logo) inner = `<image href="${lab.logo}" x="${(p.x - r * 0.62).toFixed(1)}" y="${(p.y - r * 0.62).toFixed(1)}" width="${(r * 1.24).toFixed(1)}" height="${(r * 1.24).toFixed(1)}"></image>`;
+    else if (lab.favicon) inner = `<image href="${faviconUrl(lab.favicon)}" x="${(p.x - r * 0.52).toFixed(1)}" y="${(p.y - r * 0.52).toFixed(1)}" width="${(r * 1.04).toFixed(1)}" height="${(r * 1.04).toFixed(1)}"></image>`;
+    else inner = `<text x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle" dy="4" font-size="12" font-weight="800" fill="${lab.color}">${lab.short}</text>`;
+    nodes += `<g class="flow-node" data-lab="${l}">
+      <circle class="fn-ring" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r.toFixed(1)}" fill="#fff" stroke="${lab.color}" stroke-width="2.5"></circle>
       ${inner}
-      <text x="${p.x.toFixed(1)}" y="${(p.y + r + 15).toFixed(1)}" text-anchor="middle" font-size="11" font-weight="700" fill="#1c2430">${esc(lab.short)}</text>
+      <text x="${p.x.toFixed(1)}" y="${(p.y + r + 16).toFixed(1)}" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1c2430">${esc(lab.short)}</text>
     </g>`;
   });
 
   box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="flow-svg">
     <defs><marker id="fa" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="context-stroke"></path></marker></defs>
-    <g>${links}</g><g>${nodes}</g></svg>`;
+    <g class="flow-tracks">${tracks}</g><g class="flow-dots">${dots}</g><g>${counts}</g><g>${nodes}</g></svg>
+    <div class="flow-tip" id="flowTip" hidden></div>`;
 
-  const svg = box.querySelector("svg");
+  const svg = box.querySelector("svg"), tip = box.querySelector("#flowTip");
+  const setHL = lab => box.querySelectorAll(".flow-link, .flow-dot").forEach(p => p.classList.toggle("on", p.getAttribute("data-from") === lab || p.getAttribute("data-to") === lab));
   box.querySelectorAll(".flow-node").forEach(n => {
-    const lab = n.getAttribute("data-lab");
+    const lab = n.getAttribute("data-lab"), info = LABS[lab];
     n.addEventListener("mouseenter", () => {
-      svg.classList.add("hovering");
-      box.querySelectorAll(".flow-link").forEach(p => p.classList.toggle("on", p.getAttribute("data-from") === lab || p.getAttribute("data-to") === lab));
+      svg.classList.add("hovering"); setHL(lab);
+      const ins = inc[lab], outs = outc[lab], net = ins.length - outs.length;
+      tip.innerHTML = `<div class="ft-h">${esc(info.name)}</div>
+        <div class="ft-net">${ins.length} in · ${outs.length} out · net ${net >= 0 ? "+" : ""}${net}</div>
+        ${ins.length ? `<div class="ft-row"><span class="ft-k in">IN</span> ${ins.map(esc).join(", ")}</div>` : ""}
+        ${outs.length ? `<div class="ft-row"><span class="ft-k out">OUT</span> ${outs.map(esc).join(", ")}</div>` : ""}`;
+      tip.hidden = false;
     });
-    n.addEventListener("mouseleave", () => { svg.classList.remove("hovering"); box.querySelectorAll(".flow-link.on").forEach(p => p.classList.remove("on")); });
+    n.addEventListener("mouseleave", () => { svg.classList.remove("hovering"); box.querySelectorAll(".on").forEach(p => p.classList.remove("on")); tip.hidden = true; });
     n.addEventListener("click", () => { location.href = "lab.html?l=" + lab; });
   });
 }
