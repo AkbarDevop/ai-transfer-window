@@ -181,6 +181,18 @@ a:hover { text-decoration: underline; }
 .tick .src .pts { color: var(--green); font-weight: 700; }
 .loading { padding: 22px; color: var(--muted); grid-column: 1 / -1; }
 
+/* ===== talent flow viz ===== */
+.flow-panel { padding: 6px; }
+.flow-svg { width: 100%; height: auto; display: block; max-height: 600px; }
+.flow-link { transition: stroke-opacity .15s; }
+.flow-svg.hovering .flow-link { stroke-opacity: 0.07; }
+.flow-svg.hovering .flow-link.on { stroke-opacity: 0.85; }
+.flow-count { font-size: 12px; font-weight: 800; fill: #1c2430; paint-order: stroke; stroke: #fff; stroke-width: 3px; }
+.flow-node { cursor: pointer; }
+.flow-node circle { transition: stroke-width .12s; }
+.flow-node:hover circle { stroke-width: 4; }
+#flow .upd { color: var(--muted); font-size: 11.5px; font-weight: 600; }
+
 /* ===== arXiv papers ===== */
 .papers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .paper { display: block; background: #fff; border: 1px solid var(--head-border); border-radius: 7px; padding: 13px 14px; color: var(--text); transition: all .14s; }
