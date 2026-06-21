@@ -6,7 +6,10 @@ const esc = s => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/"/g,
 const faviconUrl = d => `https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=64`;
 const fmtMonth = ym => { const [y, m] = ym.split("-"); return new Date(+y, +m - 1, 1).toLocaleDateString("en-US", { month: "short", year: "numeric" }); };
 
-let LABS = {}, MODELS = [], activeFilter = "all", q = "";
+let LABS = {}, MODELS = [], activeFilter = "all", q = "", sortKey = "index";
+const ctxNum = c => { if (!c) return 0; const m = String(c).match(/([\d.]+)\s*([mk])/i); return m ? parseFloat(m[1]) * (/m/i.test(m[2]) ? 1000 : 1) : 0; };
+const SORTS = [["index", "Top rated"], ["released", "Newest"], ["context", "Longest context"]];
+function idxColor(v) { return v >= 88 ? "#0c8a4a" : v >= 80 ? "#1a5fb4" : "#6b7686"; }
 
 function labBadge(m) {
   const lab = m.labId && LABS[m.labId];
@@ -21,12 +24,22 @@ function labBadge(m) {
   return `<span class="crest-badge" title="${esc(m.lab)}"><span class="crest-mono" style="color:#8b97a8">${esc((m.lab || "?").slice(0, 3).toUpperCase())}</span></span>`;
 }
 
+function sorter(a, b) {
+  if (sortKey === "index") return (b.index || 0) - (a.index || 0);
+  if (sortKey === "context") return ctxNum(b.context) - ctxNum(a.context);
+  return (b.released || "").localeCompare(a.released || "");
+}
+function renderSort() {
+  document.getElementById("sortbar").innerHTML = `<span class="tb-label">Sort</span>` + SORTS.map(([k, l]) =>
+    `<button class="chip dark ${sortKey === k ? "active" : ""}" data-s="${k}">${l}</button>`).join("");
+  document.querySelectorAll("#sortbar .chip").forEach(c => c.addEventListener("click", () => { sortKey = c.dataset.s; renderSort(); render(); }));
+}
 function render() {
   const ql = q.toLowerCase();
   const list = MODELS
     .filter(m => activeFilter === "all" || m.labId === activeFilter || m.lab === activeFilter)
     .filter(m => !ql || (m.name + " " + m.lab + " " + (m.knownFor || "")).toLowerCase().includes(ql))
-    .slice().sort((a, b) => (b.released || "").localeCompare(a.released || ""));
+    .slice().sort(sorter);
 
   document.getElementById("modelList").innerHTML = list.map(m => `
     <div class="trow mrow">
@@ -35,14 +48,14 @@ function render() {
         <a class="tr-name" href="${esc(m.link)}" target="_blank" rel="noopener">${esc(m.name)}</a>
         <span class="tr-title">${esc(m.lab)} · ${esc(m.note || "")}</span>
       </div>
+      <div class="m-idx" title="Estimated capability index">${m.index ? `<span class="idx-pill" style="background:${idxColor(m.index)}">${m.index}</span>` : ""}</div>
       <div class="m-mod">${esc(m.modality || "")}</div>
       <div class="m-ctx">${esc(m.context || "")}</div>
       <div class="m-open">${m.open ? `<span class="tag open">Open</span>` : `<span class="tag">Closed</span>`}</div>
-      <div class="m-tag"><span class="tag">${esc(m.knownFor || "")}</span></div>
       <div class="tr-date">${m.released ? fmtMonth(m.released) : ""}</div>
     </div>`).join("") || `<div class="empty" style="padding:16px 14px">No matches.</div>`;
 
-  document.getElementById("count").textContent = `${list.length} model${list.length === 1 ? "" : "s"}${activeFilter === "all" ? "" : " · " + ((LABS[activeFilter] || {}).name || activeFilter)}`;
+  document.getElementById("count").textContent = `${list.length} model${list.length === 1 ? "" : "s"}${activeFilter === "all" ? "" : " · " + ((LABS[activeFilter] || {}).name || activeFilter)} · index is a community estimate`;
 }
 
 function renderFilters() {
@@ -63,7 +76,7 @@ function renderFilters() {
     fetch("data/models.json").then(r => r.json())
   ]);
   LABS = labs; MODELS = models.models || models;
-  renderFilters(); render();
+  renderFilters(); renderSort(); render();
   const s = document.getElementById("search");
   if (s) s.addEventListener("input", () => { q = s.value.trim(); render(); });
 })();
