@@ -23,3 +23,13 @@
   from = "/api/papers"
   to = "/.netlify/functions/papers"
   status = 200
+
+[[redirects]]
+  from = "/api/hit"
+  to = "/.netlify/functions/hit"
+  status = 200
+
+[[redirects]]
+  from = "/api/stats"
+  to = "/.netlify/functions/stats"
+  status = 200

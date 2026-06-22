@@ -157,5 +157,6 @@
   </footer>
 
   <script src="app.js"></script>
+  <script>try{navigator.sendBeacon("/api/hit",JSON.stringify({p:location.pathname,r:document.referrer}))}catch(e){}</script>
 </body>
 </html>

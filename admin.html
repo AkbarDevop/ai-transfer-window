@@ -50,6 +50,17 @@
       <input id="key" type="password" placeholder="paste your admin key" autocomplete="off" />
     </div>
 
+    <div id="trafficBox" style="display:none;border:1px solid var(--head-border);border-radius:8px;padding:14px 16px;margin-bottom:20px;background:#fafbfc">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:8px">Traffic</div>
+      <div style="display:flex;gap:22px;margin-bottom:10px">
+        <div><div id="tbTotal" style="font-size:22px;font-weight:800;color:var(--navy)">–</div><div style="font-size:11px;color:var(--muted)">all-time visits</div></div>
+        <div><div id="tbToday" style="font-size:22px;font-weight:800;color:var(--green)">–</div><div style="font-size:11px;color:var(--muted)">today</div></div>
+      </div>
+      <div id="tbSpark" style="display:flex;gap:2px;align-items:flex-end;height:34px;margin-bottom:12px"></div>
+      <div id="tbRefs" style="font-size:12.5px;color:var(--text);line-height:1.7"></div>
+      <div id="tbPaths" style="font-size:12.5px;color:var(--text);line-height:1.7;margin-top:6px"></div>
+    </div>
+
     <form id="form">
       <div class="field">
         <label>Researcher name *</label>
@@ -200,5 +211,31 @@
       $("go").disabled = false;
     });
   </script>
+  <script>
+    // traffic dashboard (uses the same admin key)
+    let trafficLoaded = false;
+    async function loadTraffic() {
+      const key = document.getElementById("key").value.trim();
+      if (!key || trafficLoaded) return;
+      try {
+        const r = await fetch("/api/stats?key=" + encodeURIComponent(key));
+        if (!r.ok) return;
+        const s = await r.json();
+        trafficLoaded = true;
+        document.getElementById("trafficBox").style.display = "";
+        document.getElementById("tbTotal").textContent = (s.total || 0).toLocaleString();
+        document.getElementById("tbToday").textContent = s.today || 0;
+        const max = Math.max(1, ...s.series.map(d => d.n));
+        document.getElementById("tbSpark").innerHTML = s.series.map(d =>
+          `<div title="${d.day}: ${d.n}" style="flex:1;background:${d.n ? "var(--blue)" : "var(--line)"};height:${Math.max(3, d.n / max * 34)}px;border-radius:2px 2px 0 0"></div>`).join("");
+        const row = (label, arr) => arr.length ? `<b>${label}:</b> ` + arr.map(([k, v]) => `${k} <span style="color:var(--muted)">${v}</span>`).join(" · ") : "";
+        document.getElementById("tbRefs").innerHTML = row("Sources", s.topRefs);
+        document.getElementById("tbPaths").innerHTML = row("Top pages", s.topPaths);
+      } catch {}
+    }
+    document.getElementById("key").addEventListener("input", () => { trafficLoaded = false; loadTraffic(); });
+    loadTraffic();
+  </script>
+  <script>try{navigator.sendBeacon("/api/hit",JSON.stringify({p:location.pathname,r:document.referrer}))}catch(e){}</script>
 </body>
 </html>

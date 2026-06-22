@@ -30,5 +30,6 @@
   <main class="wrap" id="lab"><div class="loading-screen">Loading lab…</div></main>
   <footer class="footer"><div class="footer-fine">Curated, not automated. Not affiliated with any lab.</div></footer>
   <script src="lab.js"></script>
+  <script>try{navigator.sendBeacon("/api/hit",JSON.stringify({p:location.pathname,r:document.referrer}))}catch(e){}</script>
 </body>
 </html>
